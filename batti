@@ -40,7 +40,7 @@ if __name__ == "__main__":
     DBusGMainLoop(set_as_default=True)
     #bus = dbus.SessionBus(mainloop = DBusGMainLoop())
     bus = dbus.SessionBus()
-    if bus.request_name("org.gitorious.Batti") != dbus.bus.REQUEST_NAME_REPLY_PRIMARY_OWNER:
+    if bus.request_name("org.gitorious.batti") != dbus.bus.REQUEST_NAME_REPLY_PRIMARY_OWNER:
         sys.stderr.write("Only one instance is allowed\n")
         sys.exit(1)
     else:

@@ -3,19 +3,13 @@ from DistUtilsExtra.command import *
 import glob
 from distutils.core import setup
 
-setup(name='batterymon',
-      version="1.2.4",
-      description='A GNOME applet to monitor battery usage',
-      author='Matthew Horsell',
-      author_email='matthew.horsell@gmail.com',
-      url='http://code.google.com/p/batterymon',
-      package_dir={'batterymon': ''},
-      packages = ['batterymon'],
-      scripts=['batterymon'],
-      data_files=[('share/batterymon/icons/gnome', 
-                glob.glob('icons/gnome/*.png')), 
-        ('share/batterymon/icons/default',
-                glob.glob('icons/default/*.png'))], 
-      cmdclass = { "build" : build_extra.build_extra,
-                   "build_i18n" :  build_i18n.build_i18n },
+setup(name='batti',
+      version="0.2",
+      description='A battery monitor for the system tray',
+      author='Arthur Spitzer',
+      author_email='arthapex@gmail.com',
+      url='http://code.google.com/p/batti-gtk',
+      package_dir={'batti': 'src'},
+      packages = ['batti'],
+      scripts=['batti'],
       )

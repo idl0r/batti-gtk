@@ -10,7 +10,7 @@ import gtk
 from PowerBackend import HalBackend
 
 NAME = 'batti'
-VERSION = '0.1'
+VERSION = '0.2'
 
 _ = lambda msg: gettext.dgettext(NAME, msg)
 
@@ -48,8 +48,8 @@ class BatteryMonitor(object):
         about_dg.set_name(_("Battery Monitor"))
         about_dg.set_program_name(NAME)
         about_dg.set_version(VERSION)
-        about_dg.set_comments('development release')
-        about_dg.set_authors(["Arthur Spitzer"])
+        about_dg.set_comments('A battery monitor for the system tray')
+        about_dg.set_authors(["Arthur Spitzer <arthapex@gmail.com>"])
         about_dg.connect("response", lambda d, r: d.destroy())
         about_dg.show()
             
