@@ -4,7 +4,7 @@ import glob
 from distutils.core import setup
 
 setup(name='batti',
-      version="0.2",
+      version="0.3",
       description='A battery monitor for the system tray',
       author='Arthur Spitzer',
       author_email='arthapex@gmail.com',
