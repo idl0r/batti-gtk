@@ -7,7 +7,7 @@ from dbus.mainloop.glib import DBusGMainLoop
 import gettext
 import gtk
 
-from PowerBackend import DeviceKitBackend
+from PowerBackend import DeviceKitBackend, UPowerBackend
 
 NAME = 'batti'
 VERSION = '0.3'
@@ -19,8 +19,16 @@ class BatteryMonitor(object):
         DBusGMainLoop(set_as_default=True)
         self.__rmenu = None
         self.__lmenu = None
-        self.__backend = DeviceKitBackend()
-        self.__backend.set_right_popup_menu_action(self.__mc_action)
+        try:
+            self.__backend = UPowerBackend()
+            self.__backend.set_right_popup_menu_action(self.__mc_action)
+        except DBusException:
+            try:
+                self.__backend = DeviceKitBackend()
+                self.__backend.set_right_popup_menu_action(self.__mc_action)
+            except DBusException:
+                self.close(None)
+                
         
     
     def __suspend(self, button):
@@ -75,7 +83,8 @@ class BatteryMonitor(object):
         
     def __mc_action(self, widget, event, data=None):
         if event.button == 1:
-            self.__get_left_click_menu().popup(None, None, None, event.button, event.time)
+            if self.__backend.can_suspend() or self.__backend.can_hibernate():
+                self.__get_left_click_menu().popup(None, None, None, event.button, event.time)
         elif event.button == 3:
             self.__get_right_click_menu().popup(None, None, None, event.button, event.time)
         

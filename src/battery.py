@@ -183,3 +183,51 @@ class DeviceKitBattery(Battery):
         
         self.set_value(is_charging, is_discharging, charge_level, remaining_time_str)
 
+
+
+
+class UPowerBattery(Battery):
+    
+    dbus_iface = 'org.freedesktop.UPower.Device'
+    
+    def __init__(self, property_iface, device_iface):
+        Battery.__init__(self)
+        self.__properties = property_iface
+        self.__device = device_iface
+        self.__signal_id = self.__device.connect_to_signal('Changed', self.__on_property_modified)
+     
+     
+    def __del__(self):
+        self.__signal_id.remove()
+        Battery.__del__(self)
+    
+    
+    def update(self):
+        self.__on_property_modified()
+    
+    
+    def __on_property_modified(self):
+        
+        present = self.__properties.Get(self.dbus_iface, 'IsPresent')
+        self._set_icon_visibility(present)
+
+        #XXX: check if the battery is rechargable first
+        state = self.__properties.Get(self.dbus_iface, 'State')
+        if state == 1:
+            is_charging = True
+            is_discharging = False
+            remaining_time = self.__properties.Get(self.dbus_iface, 'TimeToFull')
+        elif state == 2:
+            is_charging = False
+            is_discharging = True
+            remaining_time = self.__properties.Get(self.dbus_iface, 'TimeToEmpty')
+        else:
+            is_charging = False
+            is_discharging = False
+            remaining_time = 0
+   
+        charge_level = self.__properties.Get(self.dbus_iface, 'Percentage')
+
+        remaining_time_str = self._str_time(remaining_time)
+        
+        self.set_value(is_charging, is_discharging, charge_level, remaining_time_str)
