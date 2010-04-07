@@ -2,63 +2,114 @@
 @author: Arthur Spitzer <arthapex@gmail.com>
 '''
 
-import dbus
 
-from battery import HalBattery
+from battery import DeviceKitBattery
+import dbus
 from dbus.exceptions import DBusException
+
 
 class PowerBackend(object):
     
-    def set_popup_menu_action(self, action):
+    def set_right_popup_menu_action(self, action):
+        pass
+    
+    def can_suspend(self):
+        pass
+    
+    def can_hibernate(self):
         pass
 
-class HalBackend(PowerBackend):
+    def suspend(self):
+        pass
     
-    dbus_service = 'org.freedesktop.Hal'
-    dbus_object = '/org/freedesktop/Hal/Manager'
-    dbus_interface = 'org.freedesktop.Hal.Manager'
-    bat_capability = 'battery'
+    def hibernate(self):
+        pass
+    
+
+class DeviceKitBackend(PowerBackend):
+    
+    dbus_service = 'org.freedesktop.DeviceKit.Power'
+    dbus_object = '/org/freedesktop/DeviceKit/Power'
+    dbus_interface = 'org.freedesktop.DeviceKit.Power'
+    device_interface = 'org.freedesktop.DeviceKit.Power.Device'
+    bat_type = 2
     
     def __init__(self):
-        self.__menu = None
+        self.__rmenu = None
         
         self.__bus = dbus.SystemBus()
-        hal_obj = self.__bus.get_object(self.dbus_service, self.dbus_object)
-        self.hal = dbus.Interface(hal_obj, self.dbus_interface)
-        udis = self.hal.FindDeviceByCapability(self.bat_capability)
-   
+        dkit_obj = self.__bus.get_object(self.dbus_service, self.dbus_object)
+        self.dkit = dbus.Interface(dkit_obj, self.dbus_interface)
+        devices = self.dkit.EnumerateDevices()
+        
         self.__batteries = {}
-        for udi in udis:
-            #halbat = HalBattery(self.__get_battery(udi))
-            self.__batteries[udi] = HalBattery(self.__get_battery(udi))
-            #del halbat
+        for dev in devices:
+            (prop_iface, dev_iface) = self.__get_battery(dev)
+            type = prop_iface.Get(self.device_interface, 'type')
+            if type == self.bat_type:
+                power_bat = DeviceKitBattery(prop_iface, dev_iface)
+                self.__batteries[dev] = power_bat
+                power_bat.set_left_popup_menu_action(self.__mc_action)
+                
         
         self.__bus.add_signal_receiver(self.__device_added, 'DeviceAdded',
              self.dbus_interface, self.dbus_service, self.dbus_object)
         self.__bus.add_signal_receiver(self.__device_removed, 'DeviceRemoved',
              self.dbus_interface, self.dbus_service, self.dbus_object)
-        self.__popup_action = None
-    
-    
-    def __get_battery(self, udi):
-        battery_obj = self.__bus.get_object(self.dbus_service, udi)
-        return dbus.Interface(battery_obj, 'org.freedesktop.Hal.Device')
+        self.__mc_action = None
+        
+
+        properties = dbus.Interface(dkit_obj, 'org.freedesktop.DBus.Properties')
+
+        if properties.Get(self.dbus_interface, 'can-suspend'):
+            self.__can_suspend = True
+        else:
+            self.__can_suspend = False
+           
+        if properties.Get(self.dbus_interface, 'can-hibernate'):
+            self.__can_hibernate = True
+        else:
+            self.__can_hibernate = False
             
     
-    def set_popup_menu_action(self, action):
-        self.__popup_action = action
-        for bat in self.__batteries.itervalues():
-            bat.set_popup_menu_action(action)
+    def __mc_action(self, widget, event, data=None):
+        if not self.__mc_action is None:
+            self.__mc_action(widget, event, data)
+            
+         
+    def can_suspend(self):   
+        return self.__can_suspend
+
+    def can_hibernate(self):
+        return self.__can_hibernate
+
+    def suspend(self):
+        self.dkit.Suspend()
+
+    def hibernate(self):
+        self.dkit.Hibernate()
+
+
+    def __get_battery(self, udi):
+        battery_obj = self.__bus.get_object(self.dbus_service, udi)
+        prop_iface = dbus.Interface(battery_obj, 'org.freedesktop.DBus.Properties')
+        dev_iface = dbus.Interface(battery_obj, self.device_interface)
+        return (prop_iface, dev_iface)
+            
+    
+    def set_right_popup_menu_action(self, action):
+        self.__mc_action = action
             
             
     def __device_added(self, udi):
-        bat = self.__get_battery(udi)
+        (prop_iface, dev_iface) = self.__get_battery(udi)
         try:
-            if bat.QueryCapability(self.bat_capability):
-                halbat = HalBattery(bat)
-                halbat.set_popup_menu_action(self.__popup_action)
-                halbat.update()
-                self.__batteries[udi] = halbat
+            type = prop_iface.Get(self.device_interface, 'type')
+            if type == self.bat_type:
+                power_bat = DeviceKitBattery(prop_iface, dev_iface)
+                power_bat.set_left_popup_menu_action(self.__mc_action)
+                power_bat.update()
+                self.__batteries[udi] = power_bat
         except DBusException:
             pass
     

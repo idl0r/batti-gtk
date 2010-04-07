@@ -5,6 +5,7 @@ import gettext
 import gtk
 
 from Notificator import Notificator
+from bzrlib.switch import switch
 
 
 _ = lambda msg: gettext.dgettext('batti', msg)
@@ -37,10 +38,10 @@ class Battery(object):
     def update(self):
         pass
     
+    
+    def set_left_popup_menu_action(self, menu_action):
+        self.__systray.connect('button_press_event', menu_action)
         
-    def set_popup_menu_action(self, menu_action):
-        self.__systray.connect('popup_menu', menu_action)
-
 
     def set_value(self, charging, discharging, level, remaining_time):
         if charging:
@@ -111,46 +112,9 @@ class Battery(object):
         
     def get_notification_enabled(self):
         return self.__show_notify
-        
-        
-class HalBattery(Battery):
-    
-    def __init__(self, battery):
-        Battery.__init__(self)
-        self.__battery = battery
-        self.__signal_id = self.__battery.connect_to_signal('PropertyModified', self.__on_property_modified)
-        #self.remaining_time = _('unknown')
-
-    def __del__(self):
-        self.__signal_id.remove()
-        Battery.__del__(self)
     
     
-    def update(self):
-        self.__on_property_modified(0, None)
-    
-    
-    def __on_property_modified(self, num_changes, property):
-        present = self.__battery.GetProperty('battery.present')
-        self._set_icon_visibility(present)
-
-        #XXX: check if the battery is rechargable first
-        is_charging = self.__battery.GetProperty('battery.rechargeable.is_charging')
-                   
-        is_discharging = self.__battery.GetProperty('battery.rechargeable.is_discharging')
-
-        charge_level = self.__battery.GetProperty('battery.charge_level.percentage')
-
-        remaining_time = -1
-        if is_discharging:
-            remaining_time = self.__battery.GetProperty('battery.remaining_time')
-
-        remaining_time_str = self.__str_time(remaining_time)
-        
-        self.set_value(is_charging, is_discharging, charge_level, remaining_time_str)
-    
-    
-    def __str_time(self, seconds):
+    def _str_time(self, seconds):
         if seconds < 0:
             return _('unknown')
        
@@ -159,10 +123,10 @@ class HalBattery(Battery):
         minutes = minutes % 60                    
        
         #FIXME: The string below needs to be i18n-ized properly
-        return self.__format_time(hours, "Hour", "Hours") + " " + self.__format_time(minutes, "Minute", "Minutes")
+        return self._format_time(hours, "Hour", "Hours") + " " + self._format_time(minutes, "Minute", "Minutes")
 
 
-    def __format_time(self, time, singular, plural):
+    def _format_time(self, time, singular, plural):
         if time == 0:
             return ""
         elif time == 1:
@@ -170,3 +134,52 @@ class HalBattery(Battery):
         else:
             return "%s %s" % (time, plural)
         
+ 
+
+
+class DeviceKitBattery(Battery):
+    
+    dbus_iface = 'org.freedesktop.DeviceKit.Power.Device'
+    
+    def __init__(self, property_iface, device_iface):
+        Battery.__init__(self)
+        self.__properties = property_iface
+        self.__device = device_iface
+        self.__signal_id = self.__device.connect_to_signal('Changed', self.__on_property_modified)
+     
+     
+    def __del__(self):
+        self.__signal_id.remove()
+        Battery.__del__(self)
+    
+    
+    def update(self):
+        self.__on_property_modified()
+    
+    
+    def __on_property_modified(self):
+        
+        present = self.__properties.Get(self.dbus_iface, 'is-present')
+        self._set_icon_visibility(present)
+
+        #XXX: check if the battery is rechargable first
+        state = self.__properties.Get(self.dbus_iface, 'state')
+        if state == 1:
+            is_charging = True
+            is_discharging = False
+            remaining_time = self.__properties.Get(self.dbus_iface, 'time-to-full')
+        elif state == 2:
+            is_charging = False
+            is_discharging = True
+            remaining_time = self.__properties.Get(self.dbus_iface, 'time-to-empty')
+        else:
+            is_charging = False
+            is_discharging = False
+            remaining_time = 0
+   
+        charge_level = self.__properties.Get(self.dbus_iface, 'percentage')
+
+        remaining_time_str = self._str_time(remaining_time)
+        
+        self.set_value(is_charging, is_discharging, charge_level, remaining_time_str)
+
