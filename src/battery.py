@@ -5,7 +5,6 @@ import gettext
 import gtk
 
 from Notificator import Notificator
-from bzrlib.switch import switch
 
 
 _ = lambda msg: gettext.dgettext('batti', msg)
@@ -21,6 +20,7 @@ class Battery(object):
         self.__shown_on_bat = False
         self.__shown_bat_low = False
         self.__shown_bat_critical = False
+        self.__shown_bat_charged = False
         self.__show_notify = True
         
         self._set_icon_visibility(True)
@@ -46,7 +46,18 @@ class Battery(object):
     def set_value(self, charging, discharging, level, remaining_time):
         if charging:
             self.__systray.set_tooltip(_("On AC (Charging) \nBattery Level: %s%%") % level)
-            self.__set_tray_icon('battery_plugged')
+            if level >= 100:
+                self.__set_tray_icon('batti-charging-100')
+            elif level >= 80:
+                self.__set_tray_icon('batti-charging-080')
+            elif level >= 60:
+                self.__set_tray_icon('batti-charging-060')
+            elif level >= 40:
+                self.__set_tray_icon('batti-charging-040')
+            elif level >= 20:
+                self.__set_tray_icon('batti-charging-020')
+            else:
+                self.__set_tray_icon('batti-charging-000')
             self.__systray.set_blinking(False)
             self.__shown_bat_critical = False
             self.__shown_bat_low = False
@@ -54,36 +65,41 @@ class Battery(object):
                 self._notify(False, 'battery_plugged', _("On AC"), _("You are currently running on AC"))
                 self.__shown_on_ac = True
                 self.__shown_on_bat = False
+                
         elif discharging:
             self.__systray.set_tooltip(_("Battery Level: %s%% \nTime remaining %s") % (level, remaining_time))
+            self.__shown_bat_charged = False
             if not self.__shown_on_bat:
                 self._notify(False, 'battery_full', _("On Battery"), _("AC adapter unplugged, running on battery"))
                 self.__shown_on_ac = False
                 self.__shown_on_bat = True
-            if level > 90:
-                self.__set_tray_icon('battery_full')
-            elif level > 75:
-                self.__set_tray_icon('battery_third_fourth')
-            elif level > 67:
-                self.__set_tray_icon('battery_two_thirds')
-            elif level > 33:
-                self.__set_tray_icon('battery-low')
-            elif level > 10:
-                self.__set_tray_icon('battery-caution')
-            elif level > 5:
-                self.__set_tray_icon('battery_empty')
+            if level >= 100:
+                self.__set_tray_icon('batti-100')
+            elif level >= 80:
+                self.__set_tray_icon('batti-080')
+            elif level >= 60:
+                self.__set_tray_icon('batti-060')
+            elif level >= 40:
+                self.__set_tray_icon('batti-040')
+            elif level >= 20:
+                self.__set_tray_icon('batti-020')
+            elif level >= 10:
+                self.__set_tray_icon('batti-000')
                 if not self.__shown_bat_low:
-                    self._notify(True, 'battery_empty', _("Low Battery"), _("You have approximately <b>%s</b> remaining") % remaining_time)
+                    self._notify(True, 'batti-000', _("Low Battery"), _("You have approximately <b>%s</b> remaining") % remaining_time)
                     self.__shown_bat_low = True
             else:
-                self.__set_tray_icon('battery_empty')
+                self.__set_tray_icon('batti-empty')
                 self.__systray.set_blinking(True)
                 if not self.__shown_bat_critical:
-                    self._notify(True, "battery_empty", _("Critical Battery"), _("You have approximately <b>%s</b> remaining") % remaining_time)
+                    self._notify(True, "batti-empty", _("Critical Battery"), _("You have approximately <b>%s</b> remaining") % remaining_time)
                     self.__shown_bat_critical = True
-        else:
-            self.__systray.set_tooltip(_("On AC \nBattery Level: %s%%") % level)
-            self.__set_tray_icon('battery_plugged')
+                    
+        elif not self.__shown_bat_charged:
+            self.__systray.set_tooltip(_("Charged\nApproximatery %s remaining") % remaining_time)
+            self.__set_tray_icon('batti-charged')
+            self._notify(False, 'batti-charged', _('Battery charged'), _("Approximately <b>%s</b> remaining") % remaining_time)
+            self.__shown_bat_charged = True
     
     
     def __set_tray_icon(self, icon_name):
@@ -175,7 +191,7 @@ class DeviceKitBattery(Battery):
         else:
             is_charging = False
             is_discharging = False
-            remaining_time = 0
+            remaining_time = self.__properties.Get(self.dbus_iface, 'time-to-empty')
    
         charge_level = self.__properties.Get(self.dbus_iface, 'percentage')
 

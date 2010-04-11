@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Batti
+Comment=Observe the battery status in the tray
+Exec=batti
+Terminal=false
+Type=Application
+Icon=batti
+StartupNotify=false
+Categories=GTK;System;Monitor;

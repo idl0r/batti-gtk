@@ -10,7 +10,11 @@ import gtk
 from PowerBackend import DeviceKitBackend, UPowerBackend
 
 NAME = 'batti'
-VERSION = '0.3'
+VERSION = '0.3.1'
+DESCRIPTION = 'A battery monitor for the system tray'
+AUTHOR = 'Arthur Spitzer'
+AUTHOR_EMAIL = 'arthapex@gmail.com'
+URL = 'http://code.google.com/p/batti-gtk'
 
 _ = lambda msg: gettext.dgettext(NAME, msg)
 
@@ -54,13 +58,13 @@ class BatteryMonitor(object):
             self.__lmenu = gtk.Menu()
             if self.__backend.can_suspend():
                 suspend_item = gtk.ImageMenuItem(_('Suspend'))
-                suspend_icon = gtk.image_new_from_icon_name('system-suspend', gtk.ICON_SIZE_MENU)
+                suspend_icon = gtk.image_new_from_icon_name('batti-suspend', gtk.ICON_SIZE_MENU)
                 suspend_item.set_image(suspend_icon)
                 suspend_item.connect('activate', self.__suspend)
                 self.__lmenu.append(suspend_item)
             if self.__backend.can_hibernate():
                 hibernate_item = gtk.ImageMenuItem(_('Hibernate'))
-                hibernate_icon = gtk.image_new_from_icon_name('system-hibernate', gtk.ICON_SIZE_MENU)
+                hibernate_icon = gtk.image_new_from_icon_name('batti-hibernate', gtk.ICON_SIZE_MENU)
                 hibernate_item.set_image(hibernate_icon)
                 hibernate_item.connect('activate', self.__hibernate)
                 self.__lmenu.append(hibernate_item)
@@ -98,8 +102,8 @@ class BatteryMonitor(object):
         about_dg.set_name(_("Battery Monitor"))
         about_dg.set_program_name(NAME)
         about_dg.set_version(VERSION)
-        about_dg.set_comments('A battery monitor for the system tray')
-        about_dg.set_authors(["Arthur Spitzer <arthapex@gmail.com>"])
+        about_dg.set_comments(DESCRIPTION)
+        about_dg.set_authors(['%s <%s>' % (AUTHOR, AUTHOR_EMAIL)])
         about_dg.connect("response", lambda d, r: d.destroy())
         about_dg.show()
             

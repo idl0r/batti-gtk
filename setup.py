@@ -1,15 +1,39 @@
 #!/usr/bin/env python
+
 from DistUtilsExtra.command import *
 import glob
+import os
 from distutils.core import setup
+from src import BatteryMonitor
 
-setup(name='batti',
-      version="0.3",
-      description='A battery monitor for the system tray',
-      author='Arthur Spitzer',
-      author_email='arthapex@gmail.com',
-      url='http://code.google.com/p/batti-gtk',
-      package_dir={'batti': 'src'},
-      packages = ['batti'],
-      scripts=['batti'],
-      )
+#Create an array with all the images
+ICONS = []
+current_dir = os.getcwd()
+icondir = './data/icons'
+os.chdir(icondir)
+for filepath in glob.glob("??x??/*"):
+    targetpath = os.path.dirname(os.path.join("share/icons/hicolor/", filepath))
+    sourcepath = "%s/%s/*.png" % (icondir, filepath)
+    ICONS.append((targetpath, glob.glob(sourcepath)))
+for filepath in glob.glob("scalable/*"):
+    targetpath = os.path.dirname(os.path.join("share/icons/hicolor/", filepath))
+    sourcepath = "%s/%s/*.svg" % (icondir, filepath)
+    ICONS.append((targetpath, glob.glob(sourcepath)))
+os.chdir(current_dir)
+
+
+setup(name = BatteryMonitor.NAME,
+    version = BatteryMonitor.VERSION, 
+    description = BatteryMonitor.DESCRIPTION,
+    author = BatteryMonitor.AUTHOR,
+    author_email = BatteryMonitor.AUTHOR_EMAIL,
+    url = BatteryMonitor.URL,
+    license = 'GNU GPL',
+    platforms = 'linux',
+    package_dir = {BatteryMonitor.NAME: 'src'},
+    packages = [BatteryMonitor.NAME],
+    scripts = [BatteryMonitor.NAME],
+    data_files = [
+        ('share/applications/', ['data/batti.desktop'])
+    ]+ICONS
+)
