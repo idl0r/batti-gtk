@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 
-#from DistUtilsExtra.command import *
 import glob
 import os
 from distutils.core import setup
