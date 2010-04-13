@@ -1,3 +1,6 @@
+batti-0.3.3
+ - license removed from about-dialog, since its location is not obvious
+
 batti-0.3.2
  - license added in the about-dialog
  - ChangeLog file added
