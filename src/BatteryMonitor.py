@@ -11,7 +11,7 @@ import sys
 from PowerBackend import DeviceKitBackend, UPowerBackend
 
 NAME = 'batti'
-VERSION = '0.3.1'
+VERSION = '0.3.2'
 DESCRIPTION = 'A battery monitor for the system tray'
 AUTHOR = 'Arthur Spitzer'
 AUTHOR_EMAIL = 'arthapex@gmail.com'
