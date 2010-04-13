@@ -1,6 +1,9 @@
-
+batti-0.3.2
  - license added in the about-dialog
  - ChangeLog file added
+ - Code cleanups, thanks to Christian (idl0r) Ruppert
+ - added precise error message, when neither UPower nor DeviceKit.Power are available 
+ - check for gtk.main loop on closing, thanks to Christian (idl0r) Ruppert
 
 batti-0.3.1
  - new icon-naming scheme

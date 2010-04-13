@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-from DistUtilsExtra.command import *
+#from DistUtilsExtra.command import *
 import glob
 import os
 from distutils.core import setup
@@ -23,7 +23,7 @@ for filepath in svg_paths:
     targetpath = os.path.join("share/icons/hicolor/", filepath)
     sourcepath = "%s/%s/*.svg" % (icondir, filepath)
     ICONS.append((targetpath, glob.glob(sourcepath)))
-
+print ICONS
 
 setup(name = BatteryMonitor.NAME,
     version = BatteryMonitor.VERSION, 

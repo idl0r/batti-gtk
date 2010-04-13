@@ -9,6 +9,24 @@ from Notificator import Notificator
 
 _ = lambda msg: gettext.dgettext('batti', msg)
 
+# battery power state
+( 
+    STATE_UNKNOWN,
+    STATE_CHARGING,
+    STATE_DISCHARGING,
+    STATE_EMPTY,
+    STATE_CHARGED,
+) = range(5)
+
+
+class BatteryInfo(object):
+    
+    def __init__(self, present=True, state=STATE_UNKNOWN, percentage=0, time=0):
+        self._present = present
+        self._state = state
+        self._percentage = percentage
+        self._time = time
+
 
 class Battery(object):
     
@@ -41,20 +59,30 @@ class Battery(object):
     
     def set_left_popup_menu_action(self, menu_action):
         self.__systray.connect('button_press_event', menu_action)
+  
+  
+    def set_value(self, info):
         
-
-    def set_value(self, charging, discharging, level, remaining_time):
-        if charging:
-            self.__systray.set_tooltip(_("On AC (Charging) \nBattery Level: %s%%") % level)
-            if level >= 100:
+        self._set_icon_visibility(info._present)
+        
+        if info._time == 0:
+            tooltip = _("Battery Level: %s%%") % (info._percentage)
+            notification = tooltip
+        else:
+            tooltip = _("Battery Level: %s%% \nApproximately %s remaining") % (info._percentage, self._str_time(info._time))
+            notification = _("Approximately <b>%s</b> remaining") % self._str_time(info._time)
+        
+        if info._state == STATE_CHARGING:
+            self.__systray.set_tooltip(_("Charging this battery \nBattery Level: %s%%") % info._percentage)
+            if info._percentage >= 100:
                 self.__set_tray_icon('batti-charging-100')
-            elif level >= 80:
+            elif info._percentage >= 80:
                 self.__set_tray_icon('batti-charging-080')
-            elif level >= 60:
+            elif info._percentage >= 60:
                 self.__set_tray_icon('batti-charging-060')
-            elif level >= 40:
+            elif info._percentage >= 40:
                 self.__set_tray_icon('batti-charging-040')
-            elif level >= 20:
+            elif info._percentage >= 20:
                 self.__set_tray_icon('batti-charging-020')
             else:
                 self.__set_tray_icon('batti-charging-000')
@@ -62,45 +90,45 @@ class Battery(object):
             self.__shown_bat_critical = False
             self.__shown_bat_low = False
             if not self.__shown_on_ac:
-                self._notify(False, 'battery_plugged', _("On AC"), _("You are currently running on AC"))
+                self._notify(False, 'battery_plugged', _('Charging this battery'), _("You are currently running on AC"))
                 self.__shown_on_ac = True
                 self.__shown_on_bat = False
                 
-        elif discharging:
-            self.__systray.set_tooltip(_("Battery Level: %s%% \nTime remaining %s") % (level, remaining_time))
+        elif info._state == STATE_DISCHARGING:
+            self.__systray.set_tooltip(tooltip)
             self.__shown_bat_charged = False
             if not self.__shown_on_bat:
                 self._notify(False, 'battery_full', _("On Battery"), _("AC adapter unplugged, running on battery"))
                 self.__shown_on_ac = False
                 self.__shown_on_bat = True
-            if level >= 100:
+            if info._percentage >= 100:
                 self.__set_tray_icon('batti-100')
-            elif level >= 80:
+            elif info._percentage >= 80:
                 self.__set_tray_icon('batti-080')
-            elif level >= 60:
+            elif info._percentage >= 60:
                 self.__set_tray_icon('batti-060')
-            elif level >= 40:
+            elif info._percentage >= 40:
                 self.__set_tray_icon('batti-040')
-            elif level >= 20:
+            elif info._percentage >= 20:
                 self.__set_tray_icon('batti-020')
-            elif level >= 10:
+            elif info._percentage >= 10:
                 self.__set_tray_icon('batti-000')
                 if not self.__shown_bat_low:
-                    self._notify(True, 'batti-000', _("Low Battery"), _("You have approximately <b>%s</b> remaining") % remaining_time)
+                    self._notify(True, 'batti-000', _("Low Battery"), notification)
                     self.__shown_bat_low = True
             else:
                 self.__set_tray_icon('batti-empty')
                 self.__systray.set_blinking(True)
                 if not self.__shown_bat_critical:
-                    self._notify(True, "batti-empty", _("Critical Battery"), _("You have approximately <b>%s</b> remaining") % remaining_time)
+                    self._notify(True, "batti-empty", _("Critical Battery"), notification)
                     self.__shown_bat_critical = True
                     
-        elif not self.__shown_bat_charged:
-            self.__systray.set_tooltip(_("Charged\nApproximatery %s remaining") % remaining_time)
+        elif (not self.__shown_bat_charged) and (info._state == STATE_CHARGED):
+            self.__systray.set_tooltip(_("Charged\n%s") % tooltip)
             self.__set_tray_icon('batti-charged')
-            self._notify(False, 'batti-charged', _('Battery charged'), _("Approximately <b>%s</b> remaining") % remaining_time)
+            self._notify(False, 'batti-charged', _('Battery charged'), notification)
             self.__shown_bat_charged = True
-    
+                     
     
     def __set_tray_icon(self, icon_name):
         self.__systray.set_from_icon_name(icon_name)
@@ -175,29 +203,26 @@ class DeviceKitBattery(Battery):
     
     def __on_property_modified(self):
         
-        present = self.__properties.Get(self.dbus_iface, 'is-present')
-        self._set_icon_visibility(present)
+        info = BatteryInfo()
+        
+        
+        info._present = self.__properties.Get(self.dbus_iface, 'is-present')
 
         #XXX: check if the battery is rechargable first
         state = self.__properties.Get(self.dbus_iface, 'state')
         if state == 1:
-            is_charging = True
-            is_discharging = False
-            remaining_time = self.__properties.Get(self.dbus_iface, 'time-to-full')
+            info._state = STATE_CHARGING
         elif state == 2:
-            is_charging = False
-            is_discharging = True
-            remaining_time = self.__properties.Get(self.dbus_iface, 'time-to-empty')
+            info._state = STATE_DISCHARGING
         else:
-            is_charging = False
-            is_discharging = False
-            remaining_time = self.__properties.Get(self.dbus_iface, 'time-to-empty')
+            info._state = STATE_UNKNOWN
+        
+        info._time = self.__properties.Get(self.dbus_iface, 'time-to-empty')
    
         charge_level = self.__properties.Get(self.dbus_iface, 'percentage')
+        info._percentage = int(charge_level)
 
-        remaining_time_str = self._str_time(remaining_time)
-        
-        self.set_value(is_charging, is_discharging, charge_level, remaining_time_str)
+        self.set_value(info)
 
 
 
@@ -224,26 +249,28 @@ class UPowerBattery(Battery):
     
     def __on_property_modified(self):
         
+        info = BatteryInfo()
+        
         present = self.__properties.Get(self.dbus_iface, 'IsPresent')
         self._set_icon_visibility(present)
+        info._present = present
 
-        #XXX: check if the battery is rechargable first
         state = self.__properties.Get(self.dbus_iface, 'State')
-        if state == 1:
-            is_charging = True
-            is_discharging = False
-            remaining_time = self.__properties.Get(self.dbus_iface, 'TimeToFull')
-        elif state == 2:
-            is_charging = False
-            is_discharging = True
-            remaining_time = self.__properties.Get(self.dbus_iface, 'TimeToEmpty')
-        else:
-            is_charging = False
-            is_discharging = False
-            remaining_time = 0
-   
-        charge_level = self.__properties.Get(self.dbus_iface, 'Percentage')
 
-        remaining_time_str = self._str_time(remaining_time)
+        if state == 1:
+            info._state = STATE_CHARGING
+        elif state == 2:
+            info._state = STATE_DISCHARGING
+        elif state == 3:
+            info._state = STATE_EMPTY
+        elif state == 4:
+            info._state = STATE_CHARGED
+        else:
+            info._state = STATE_UNKNOWN
         
-        self.set_value(is_charging, is_discharging, charge_level, remaining_time_str)
+        info._time = self.__properties.Get(self.dbus_iface, 'TimeToEmpty')
+   
+        precise_charge = self.__properties.Get(self.dbus_iface, 'Percentage')
+        info._percentage = int(precise_charge)
+        
+        self.set_value(info)

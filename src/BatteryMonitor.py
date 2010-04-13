@@ -6,6 +6,7 @@ from dbus.exceptions import DBusException
 from dbus.mainloop.glib import DBusGMainLoop
 import gettext
 import gtk
+import sys
 
 from PowerBackend import DeviceKitBackend, UPowerBackend
 
@@ -26,11 +27,23 @@ class BatteryMonitor(object):
         try:
             self.__backend = UPowerBackend()
             self.__backend.set_right_popup_menu_action(self.__mc_action)
-        except DBusException:
+        except DBusException as e_upower:
             try:
                 self.__backend = DeviceKitBackend()
                 self.__backend.set_right_popup_menu_action(self.__mc_action)
-            except DBusException:
+            except DBusException as e_devkit:
+                sys.stderr.write(""" 
+Neither UPower nor DeviceKit.Power could be initialized!
+This can have multiple reasons. You do not want to use Hal, do you?
+Here is the error for UPower:
+
+    %s
+
+And this is the error for DeviceKit.Power:
+
+    %s
+
+""" % (e_upower, e_devkit))
                 self.close(None)
                 
         
@@ -50,7 +63,7 @@ class BatteryMonitor(object):
     
     
     def __handle_exception(self, exception):
-        print exception
+        sys.stderr.write(exception)
     
     
     def __get_left_click_menu(self):
@@ -78,7 +91,7 @@ class BatteryMonitor(object):
             about_menu = gtk.ImageMenuItem(gtk.STOCK_ABOUT)
             about_menu.connect('activate', self.about)
             exit_menu = gtk.ImageMenuItem(gtk.STOCK_CLOSE)
-            exit_menu.connect('activate', self.close)        
+            exit_menu.connect('activate', self.close)
             self.__rmenu.append(about_menu)
             self.__rmenu.append(exit_menu)
             self.__rmenu.show_all()
@@ -94,7 +107,11 @@ class BatteryMonitor(object):
         
         
     def close(self,button):
-        gtk.main_quit()
+        # Check if we're already in gtk.main loop
+        if gtk.main_level() > 0:
+            gtk.main_quit()
+        else:
+            exit(1)
 
 
     def about(self, button):
