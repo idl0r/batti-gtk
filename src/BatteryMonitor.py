@@ -104,6 +104,8 @@ class BatteryMonitor(object):
         about_dg.set_version(VERSION)
         about_dg.set_comments(DESCRIPTION)
         about_dg.set_authors(['%s <%s>' % (AUTHOR, AUTHOR_EMAIL)])
+        copying = open('../COPYING', 'r')
+        about_dg.set_license(copying.read())
         about_dg.connect("response", lambda d, r: d.destroy())
         about_dg.show()
             

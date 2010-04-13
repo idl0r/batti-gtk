@@ -1,0 +1,10 @@
+
+ - license added in the about-dialog
+ - ChangeLog file added
+
+batti-0.3.1
+ - new icon-naming scheme
+ - icons from gnome-power-manager included according to the icon-naming scheme
+
+batti-0.3
+ - first official release
