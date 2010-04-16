@@ -1,5 +1,20 @@
+
 '''
-@author: Arthur Spitzer <arthapex@gmail.com>
+    This file is part of batti, a battery monitor for the system tray.
+    Copyright (C) 2010  Arthur Spitzer
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 2 of the License, or
+    any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 '''
 
 from dbus.exceptions import DBusException
@@ -8,16 +23,11 @@ import gettext
 import gtk
 import sys
 
-from PowerBackend import DeviceKitBackend, UPowerBackend
+import Constants
+from PowerBackend import DeviceKitBackend
+from PowerBackend import UPowerBackend
 
-NAME = 'batti'
-VERSION = '0.3.3'
-DESCRIPTION = 'A battery monitor for the system tray'
-AUTHOR = 'Arthur Spitzer'
-AUTHOR_EMAIL = 'arthapex@gmail.com'
-URL = 'http://code.google.com/p/batti-gtk'
-
-_ = lambda msg: gettext.dgettext(NAME, msg)
+_ = lambda msg: gettext.dgettext(Constants.NAME, msg)
 
 class BatteryMonitor(object):
     def __init__(self):
@@ -117,10 +127,11 @@ And this is the error for DeviceKit.Power:
     def about(self, button):
         about_dg = gtk.AboutDialog()
         about_dg.set_name(_("Battery Monitor"))
-        about_dg.set_program_name(NAME)
-        about_dg.set_version(VERSION)
-        about_dg.set_comments(DESCRIPTION)
-        about_dg.set_authors(['%s <%s>' % (AUTHOR, AUTHOR_EMAIL)])
+        about_dg.set_program_name(Constants.NAME)
+        about_dg.set_version(Constants.VERSION)
+        about_dg.set_comments(Constants.DESCRIPTION)
+        about_dg.set_license(Constants.LICENSE_TEXT)
+        about_dg.set_authors(['%s <%s>' % (Constants.AUTHOR, Constants.AUTHOR_EMAIL)])
         about_dg.connect("response", lambda d, r: d.destroy())
         about_dg.show()
             
