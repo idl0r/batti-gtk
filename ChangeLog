@@ -2,7 +2,7 @@ batti-0.3.4
  - Moved constants into a separate file, so that the setup.py does not try to import gtk, which leads to an error if not in a X-environment. Thanks to Christoph Wickert for pointing that out.
  - Included the license text as a constant, and from there into the about-dialog.
  - included copyleft notices at the top of every file
- - renamed battery.py into Battery.py to match the other files
+ - renamed battery.py into Battery.py to match the other files naming
 
 batti-0.3.3
  - license removed from about-dialog, since its location is not that obvious
