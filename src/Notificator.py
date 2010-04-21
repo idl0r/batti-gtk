@@ -18,20 +18,25 @@
 '''
 
 import dbus
+from dbus.exceptions import DBusException
 
 class Notificator:
     
     def __init__(self):
-        bus = dbus.SessionBus()
-        obj = bus.get_object('org.freedesktop.Notifications', '/org/freedesktop/Notifications')
-        self.__notify = dbus.Interface(obj, 'org.freedesktop.Notifications')
-        self.__last_id = dbus.UInt32(0)
-        self.__posx = -1
-        self.__posy = -1
-        self.__positioned = True
-        self.__duration = 3000
-        self.__name = 'batti'
-        self.__check_capabilities()
+        try:
+            bus = dbus.SessionBus()
+            obj = bus.get_object('org.freedesktop.Notifications', '/org/freedesktop/Notifications')
+            self.__notify = dbus.Interface(obj, 'org.freedesktop.Notifications')
+            self.__last_id = dbus.UInt32(0)
+            self.__posx = -1
+            self.__posy = -1
+            self.__positioned = True
+            self.__duration = 3000
+            self.__name = 'batti'
+            self.__check_capabilities()
+        except DBusException:
+            self.__notify = None
+            self.__positioned = False
 
 
     def __check_capabilities(self):
@@ -48,11 +53,12 @@ class Notificator:
 
 
     def __show(self, icon, subject, msg, urgent):
-        hints = {'urgency':dbus.Byte(urgent), 'desktop-entry':dbus.String('battery-monitor')}
-        if( self.__show_positioned() ):
-            hints['x'] = self.__posx
-            hints['y'] = self.__posy
-        self.__last_id = self.__notify.Notify(self.__name, self.__last_id, icon, subject, msg, [], hints, self.__duration)
+        if self.__notify is not None:
+            hints = {'urgency':dbus.Byte(urgent), 'desktop-entry':dbus.String('battery-monitor')}
+            if( self.__show_positioned() ):
+                hints['x'] = self.__posx
+                hints['y'] = self.__posy
+            self.__last_id = self.__notify.Notify(self.__name, self.__last_id, icon, subject, msg, [], hints, self.__duration)
 
 
     def show(self, icon, subject, msg):
@@ -64,7 +70,7 @@ class Notificator:
 
 
     def close(self):
-        if self.__last_id:
+        if (self.__notify is not None) and self.__last_id:
             self.__notify.CloseNotification(self.__last_id)
 
 

@@ -44,7 +44,7 @@ class BatteryMonitor(object):
             except DBusException as e_devkit:
                 sys.stderr.write(""" 
 Neither UPower nor DeviceKit.Power could be initialized!
-This can have multiple reasons. You do not want to use Hal, do you?
+This can have multiple reasons.
 Here is the error for UPower:
 
     %s
