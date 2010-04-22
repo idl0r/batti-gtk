@@ -1,0 +1,91 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2010-04-22 23:06+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/Battery.py:117
+msgid "AC adapter unplugged, running on battery"
+msgstr ""
+
+#: src/Battery.py:89
+#, python-format
+msgid "Approximately <b>%s</b> remaining"
+msgstr ""
+
+#: src/Battery.py:85
+#, python-format
+msgid "Battery Level: %s%%"
+msgstr ""
+
+#: src/Battery.py:88
+msgid ""
+"Battery Level: %s%\\% \n"
+"Approximately %s remaining"
+msgstr ""
+
+#: src/BatteryMonitor.py:129
+msgid "Battery Monitor"
+msgstr ""
+
+#: src/Battery.py:145
+msgid "Battery charged"
+msgstr ""
+
+#: src/Battery.py:143
+#, python-format
+msgid ""
+"Charged\n"
+"%s"
+msgstr ""
+
+#: src/Battery.py:109
+msgid "Charging this battery"
+msgstr ""
+
+#: src/Battery.py:92
+#, python-format
+msgid ""
+"Charging this battery \n"
+"Battery Level: %s%%"
+msgstr ""
+
+#: src/Battery.py:139
+msgid "Critical Battery"
+msgstr ""
+
+#: src/BatteryMonitor.py:89
+msgid "Hibernate"
+msgstr ""
+
+#: src/Battery.py:133
+msgid "Low Battery"
+msgstr ""
+
+#: src/Battery.py:117
+msgid "On Battery"
+msgstr ""
+
+#: src/BatteryMonitor.py:83
+msgid "Suspend"
+msgstr ""
+
+#: src/Battery.py:109
+msgid "You are currently running on AC"
+msgstr ""
+
+#: src/Battery.py:179
+msgid "unknown"
+msgstr ""

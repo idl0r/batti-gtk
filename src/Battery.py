@@ -85,7 +85,7 @@ class Battery(object):
             tooltip = _("Battery Level: %s%%") % (info._percentage)
             notification = tooltip
         else:
-            tooltip = _("Battery Level: %s%% \nApproximately %s remaining") % (info._percentage, self._str_time(info._time))
+            tooltip = _("Battery Level: %s%\% \nApproximately %s remaining") % (info._percentage, self._str_time(info._time))
             notification = _("Approximately <b>%s</b> remaining") % self._str_time(info._time)
         
         if info._state == STATE_CHARGING:
