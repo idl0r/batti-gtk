@@ -183,7 +183,7 @@ class Battery(object):
         minutes = minutes % 60                    
        
         #FIXME: The string below needs to be i18n-ized properly
-        return self._format_time(hours, "Hour", "Hours") + " " + self._format_time(minutes, "Minute", "Minutes")
+        return self._format_time(hours, _('Hour'), _('Hours')) + " " + self._format_time(minutes, "Minute", "Minutes")
 
 
     def _format_time(self, time, singular, plural):
@@ -236,7 +236,7 @@ class DeviceKitBattery(Battery):
         info._time = self.__properties.Get(self.dbus_iface, 'time-to-empty')
    
         charge_level = self.__properties.Get(self.dbus_iface, 'percentage')
-        info._percentage = int(charge_level)
+        info._percentage = int(float(str(charge_level)))
 
         self.set_value(info)
 
@@ -287,6 +287,6 @@ class UPowerBattery(Battery):
         info._time = self.__properties.Get(self.dbus_iface, 'TimeToEmpty')
    
         precise_charge = self.__properties.Get(self.dbus_iface, 'Percentage')
-        info._percentage = int(precise_charge)
+        info._percentage = int(float(str(precise_charge)))
         
         self.set_value(info)
