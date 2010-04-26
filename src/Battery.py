@@ -183,7 +183,7 @@ class Battery(object):
         minutes = minutes % 60                    
        
         #FIXME: The string below needs to be i18n-ized properly
-        return self._format_time(hours, _('Hour'), _('Hours')) + " " + self._format_time(minutes, "Minute", "Minutes")
+        return self._format_time(hours, _('Hour'), _('Hours')) + " " + self._format_time(minutes, _('Minute'), _('Minutes'))
 
 
     def _format_time(self, time, singular, plural):
