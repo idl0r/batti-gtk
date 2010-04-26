@@ -90,15 +90,15 @@ class Battery(object):
         
         if info._state == STATE_CHARGING:
             self.__systray.set_tooltip(_("Charging this battery \nBattery Level: %s%%") % info._percentage)
-            if info._percentage >= 100:
+            if info._percentage > 90:
                 self.__set_tray_icon('batti-charging-100')
-            elif info._percentage >= 80:
+            elif info._percentage > 70:
                 self.__set_tray_icon('batti-charging-080')
-            elif info._percentage >= 60:
+            elif info._percentage > 50:
                 self.__set_tray_icon('batti-charging-060')
-            elif info._percentage >= 40:
+            elif info._percentage > 30:
                 self.__set_tray_icon('batti-charging-040')
-            elif info._percentage >= 20:
+            elif info._percentage > 10:
                 self.__set_tray_icon('batti-charging-020')
             else:
                 self.__set_tray_icon('batti-charging-000')
@@ -117,17 +117,17 @@ class Battery(object):
                 self._notify(False, 'battery_full', _("On Battery"), _("AC adapter unplugged, running on battery"))
                 self.__shown_on_ac = False
                 self.__shown_on_bat = True
-            if info._percentage >= 100:
+            if info._percentage > 90:
                 self.__set_tray_icon('batti-100')
-            elif info._percentage >= 80:
+            elif info._percentage > 70:
                 self.__set_tray_icon('batti-080')
-            elif info._percentage >= 60:
+            elif info._percentage > 50:
                 self.__set_tray_icon('batti-060')
-            elif info._percentage >= 40:
+            elif info._percentage > 30:
                 self.__set_tray_icon('batti-040')
-            elif info._percentage >= 20:
+            elif info._percentage > 10:
                 self.__set_tray_icon('batti-020')
-            elif info._percentage >= 10:
+            elif info._percentage > 5:
                 self.__set_tray_icon('batti-000')
                 if not self.__shown_bat_low:
                     self._notify(True, 'batti-000', _("Low Battery"), notification)
