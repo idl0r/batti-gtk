@@ -1,6 +1,8 @@
 batti-0.3.5
  - Check for availability of notification-daemon, to make notification finally optional
  - remove confusing comment about hal
+ - fixed/hacked rounding of 100% battery status
+ - changed status-ranges for images to better match gpm
 
 batti-0.3.4
  - Moved constants into a separate file, so that the setup.py does not try to import gtk, which leads to an error if not in a X-environment. Thanks to Christoph Wickert for pointing that out.
