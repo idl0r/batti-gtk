@@ -73,7 +73,7 @@ And this is the error for DeviceKit.Power:
     
     
     def __handle_exception(self, exception):
-        sys.stderr.write(exception)
+        sys.stderr.write('%s' % exception)
     
     
     def __get_left_click_menu(self):
@@ -91,6 +91,9 @@ And this is the error for DeviceKit.Power:
                 hibernate_item.set_image(hibernate_icon)
                 hibernate_item.connect('activate', self.__hibernate)
                 self.__lmenu.append(hibernate_item)
+            # DEBUG:
+            temp_item = gtk.ImageMenuItem('Temp')
+            self.__lmenu.append(temp_item)
             self.__lmenu.show_all()
         return self.__lmenu
     
