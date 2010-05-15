@@ -81,7 +81,7 @@ msgstr ""
 
 #: src/BatteryMonitor.py:83
 msgid "Suspend"
-msgstr ""
+msgstr "Bereitschaftsmodus"
 
 #: src/Battery.py:109
 msgid "You are currently running on AC"

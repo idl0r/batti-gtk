@@ -1,5 +1,6 @@
 batti-0.3.6
  - fixed DBusException handling on hibernate
+ - Fix typo (issue #2)
 
 batti-0.3.5
  - Check for availability of notification-daemon, to make notification finally optional
