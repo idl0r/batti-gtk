@@ -6,87 +6,102 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: batti 0.3.7\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-22 23:06+0200\n"
-"PO-Revision-Date: 2010-04-22 23:07+0200\n"
+"POT-Creation-Date: 2010-05-16 15:19+0200\n"
+"PO-Revision-Date: 2010-05-16 15:25+0200\n"
 "Last-Translator: Arthur Spitzer <arthapex@gmail.com>\n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=ISO-8859-1\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-
-#: src/Battery.py:117
-msgid "AC adapter unplugged, running on battery"
-msgstr "Stromzufuhr getrennt. Versorgung durch Akku."
-
-#: src/Battery.py:89
-#, python-format
-msgid "Approximately <b>%s</b> remaining"
-msgstr "Geschätzte <b>%s</b> verbleiben"
-
-#: src/Battery.py:85
-#, python-format
-msgid "Battery Level: %s%%"
-msgstr "Ladezustand: %s%%"
-
-#: src/Battery.py:88
-msgid ""
-"Battery Level: %s%\\% \n"
-"Approximately %s remaining"
-msgstr ""
-
-#: src/BatteryMonitor.py:129
-msgid "Battery Monitor"
-msgstr ""
-
-#: src/Battery.py:145
-msgid "Battery charged"
-msgstr "Batterie vollständig geladen."
-
-#: src/Battery.py:143
-#, python-format
-msgid ""
-"Charged\n"
-"%s"
-msgstr ""
-
-#: src/Battery.py:109
-msgid "Charging this battery"
-msgstr "Batterie wird geladen"
-
-#: src/Battery.py:92
-#, python-format
-msgid ""
-"Charging this battery \n"
-"Battery Level: %s%%"
-msgstr ""
-
-#: src/Battery.py:139
-msgid "Critical Battery"
-msgstr "Kritischer Ladezustand"
-
-#: src/BatteryMonitor.py:89
-msgid "Hibernate"
-msgstr "Ruhezustand"
-
-#: src/Battery.py:133
-msgid "Low Battery"
-msgstr "Geringer Ladezustand"
-
-#: src/Battery.py:117
-msgid "On Battery"
-msgstr ""
 
 #: src/BatteryMonitor.py:83
 msgid "Suspend"
 msgstr "Bereitschaftsmodus"
 
-#: src/Battery.py:109
-msgid "You are currently running on AC"
+#: src/BatteryMonitor.py:89
+msgid "Hibernate"
+msgstr "Ruhezustand"
+
+#: src/BatteryMonitor.py:129
+msgid "Battery Monitor"
 msgstr ""
 
-#: src/Battery.py:179
-msgid "unknown"
-msgstr "unbekannt"
+#: src/Battery.py:85
+#, python-format
+msgid "Battery level: %s%%"
+msgstr "Ladezustand: %s%%"
+
+#: src/Battery.py:89
+#, python-format
+msgid ""
+"Battery level: %(level)s%%\n"
+"Providing power for approximately %(time)s"
+msgstr ""
+"Ladezustand: %(level)s%%\n"
+"Ermöglicht %(time)s Akku-Laufzeit"
+
+#: src/Battery.py:90
+#, python-format
+msgid "Power for approximately <b>%s</b> remaining"
+msgstr "<b>%s</b> Akku-Laufzeit verbleibend"
+
+#: src/Battery.py:93
+#, python-format
+msgid ""
+"Charging battery\n"
+"Battery level: %s%%"
+msgstr ""
+"Akku wird geladen"
+"Ladezustand: %s%%"
+
+#: src/Battery.py:115
+msgid "Charging battery"
+msgstr "Akku wird geladen"
+
+#: src/Battery.py:132
+msgid "Low battery level"
+msgstr "Niedriger Akkuladezustand"
+
+#: src/Battery.py:138
+msgid "Critical battery level"
+msgstr "Kritischer Akkuladezustand"
+
+#: src/Battery.py:143
+msgid "Discharging battery"
+msgstr "Akku wird entladen"
+
+#: src/Battery.py:148
+#, python-format
+msgid ""
+"Battery charged\n"
+"%s"
+msgstr ""
+"Akku vollständig geladen\n"
+"%s"
+
+#: src/Battery.py:151
+msgid "Battery charged"
+msgstr "Akku vollstandig geladen"
+
+#: src/Battery.py:185
+msgid "unknown time"
+msgstr "unbekannte Restzeit"
+
+#: src/Battery.py:192
+msgid "Hour"
+msgstr "Stunde"
+
+#: src/Battery.py:192
+msgid "Hours"
+msgstr "Stunden"
+
+#: src/Battery.py:192
+msgid "Minute"
+msgstr "Minute"
+
+#: src/Battery.py:192
+msgid "Minutes"
+msgstr "Minuten"

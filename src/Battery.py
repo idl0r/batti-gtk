@@ -86,11 +86,11 @@ class Battery(object):
             notification = tooltip
         else:
             time_str = self._str_time(info._time)
-            tooltip = _("Battery level: %s%%\nProviding power for approximately %s") % (info._percentage, time_str)
-            notification = _("Power for approximately <b>%s</b> remaining") % time_str
+            tooltip = _('Battery level: %(level)s%%\nProviding power for approximately %(time)s') % {'level': info._percentage, 'time': time_str}
+            notification = _('Power for approximately <b>%s</b> remaining') % time_str
         
         if info._state == STATE_CHARGING:
-            self.__systray.set_tooltip(_("Charging battery\nBattery level: %s%%") % info._percentage)
+            self.__systray.set_tooltip(_('Charging battery\nBattery level: %s%%') % info._percentage)
             if info._percentage > 90:
                 icon = 'batti-charging-100'
             elif info._percentage > 70:
@@ -291,6 +291,7 @@ class UPowerBattery(Battery):
             info._state = STATE_UNKNOWN
         
         info._time = self.__properties.Get(self.dbus_iface, 'TimeToEmpty')
+        info._time = 5678
    
         precise_charge = self.__properties.Get(self.dbus_iface, 'Percentage')
         info._percentage = int(float(str(precise_charge)))

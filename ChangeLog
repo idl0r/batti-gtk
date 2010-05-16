@@ -2,6 +2,7 @@ batti-0.3.7
  - typo was %s%%% as a correction of %s\%. Should be %s%%
  - UPowerBackend: don't save the dbus interface as a local variable. Get the interface from the session-bus every time it is needed, instead
  - better battery level and notifications handling
+ - initial translation support
  - minor fixes
 
 batti-0.3.6

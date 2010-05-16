@@ -6,9 +6,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: batti 0.3.7\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-22 23:06+0200\n"
+"POT-Creation-Date: 2010-05-16 15:19+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,76 +16,85 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/Battery.py:117
-msgid "AC adapter unplugged, running on battery"
-msgstr ""
-
-#: src/Battery.py:89
-#, python-format
-msgid "Approximately <b>%s</b> remaining"
-msgstr ""
-
-#: src/Battery.py:85
-#, python-format
-msgid "Battery Level: %s%%"
-msgstr ""
-
-#: src/Battery.py:88
-msgid ""
-"Battery Level: %s%\\% \n"
-"Approximately %s remaining"
-msgstr ""
-
-#: src/BatteryMonitor.py:129
-msgid "Battery Monitor"
-msgstr ""
-
-#: src/Battery.py:145
-msgid "Battery charged"
-msgstr ""
-
-#: src/Battery.py:143
-#, python-format
-msgid ""
-"Charged\n"
-"%s"
-msgstr ""
-
-#: src/Battery.py:109
-msgid "Charging this battery"
-msgstr ""
-
-#: src/Battery.py:92
-#, python-format
-msgid ""
-"Charging this battery \n"
-"Battery Level: %s%%"
-msgstr ""
-
-#: src/Battery.py:139
-msgid "Critical Battery"
+#: src/BatteryMonitor.py:83
+msgid "Suspend"
 msgstr ""
 
 #: src/BatteryMonitor.py:89
 msgid "Hibernate"
 msgstr ""
 
-#: src/Battery.py:133
-msgid "Low Battery"
+#: src/BatteryMonitor.py:129
+msgid "Battery Monitor"
 msgstr ""
 
-#: src/Battery.py:117
-msgid "On Battery"
+#: src/Battery.py:85
+#, python-format
+msgid "Battery level: %s%%"
 msgstr ""
 
-#: src/BatteryMonitor.py:83
-msgid "Suspend"
+#: src/Battery.py:89
+#, python-format
+msgid ""
+"Battery level: %(level)s%%\n"
+"Providing power for approximately %(time)s"
 msgstr ""
 
-#: src/Battery.py:109
-msgid "You are currently running on AC"
+#: src/Battery.py:90
+#, python-format
+msgid "Power for approximately <b>%s</b> remaining"
 msgstr ""
 
-#: src/Battery.py:179
-msgid "unknown"
+#: src/Battery.py:93
+#, python-format
+msgid ""
+"Charging battery\n"
+"Battery level: %s%%"
+msgstr ""
+
+#: src/Battery.py:115
+msgid "Charging battery"
+msgstr ""
+
+#: src/Battery.py:132
+msgid "Low battery level"
+msgstr ""
+
+#: src/Battery.py:138
+msgid "Critical battery level"
+msgstr ""
+
+#: src/Battery.py:143
+msgid "Discharging battery"
+msgstr ""
+
+#: src/Battery.py:148
+#, python-format
+msgid ""
+"Battery charged\n"
+"%s"
+msgstr ""
+
+#: src/Battery.py:151
+msgid "Battery charged"
+msgstr ""
+
+#: src/Battery.py:185
+msgid "unknown time"
+msgstr ""
+
+#: src/Battery.py:192
+msgid "Hour"
+msgstr ""
+
+#: src/Battery.py:192
+msgid "Hours"
+msgstr ""
+
+#: src/Battery.py:192
+msgid "Minute"
+msgstr ""
+
+#: src/Battery.py:192
+msgid "Minutes"
 msgstr ""
