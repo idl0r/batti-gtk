@@ -159,9 +159,8 @@ class UPowerBackend(PowerBackend):
         self.__rmenu = None
         
         self.__bus = dbus.SystemBus()
-        dkit_obj = self.__bus.get_object(self.dbus_service, self.dbus_object)
-        self.dkit = dbus.Interface(dkit_obj, self.dbus_interface)
-        devices = self.dkit.EnumerateDevices()
+        iface = self.__get_interface()
+        devices = iface.EnumerateDevices()
         
         self.__batteries = {}
         for dev in devices:
@@ -178,17 +177,12 @@ class UPowerBackend(PowerBackend):
         self.__bus.add_signal_receiver(self.__device_removed, 'DeviceRemoved',
              self.dbus_interface, self.dbus_service, self.dbus_object)
         self.__mc_action = None
-        
-        if self.dkit.SuspendAllowed():
-            self.__can_suspend = True
-        else:
-            self.__can_suspend = False
-           
-        if self.dkit.HibernateAllowed():
-            self.__can_hibernate = True
-        else:
-            self.__can_hibernate = False
-            
+    
+    
+    def __get_interface(self):
+        dkit_obj = self.__bus.get_object(self.dbus_service, self.dbus_object)
+        return dbus.Interface(dkit_obj, self.dbus_interface)
+    
     
     def __mc_action(self, widget, event, data=None):
         if not self.__mc_action is None:
@@ -196,16 +190,16 @@ class UPowerBackend(PowerBackend):
             
          
     def can_suspend(self):   
-        return self.__can_suspend
+        return self.__get_interface().SuspendAllowed()
 
     def can_hibernate(self):
-        return self.__can_hibernate
+        return self.__get_interface().HibernateAllowed()
 
     def suspend(self):
-        self.dkit.Suspend()
+        self.__get_interface().Suspend()
 
     def hibernate(self):
-        self.dkit.Hibernate()
+        self.__get_interface().Hibernate()
 
 
     def __get_battery(self, udi):
