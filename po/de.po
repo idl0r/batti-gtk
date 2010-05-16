@@ -3,7 +3,7 @@
 # Copyright (C) 2010 THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # Arthur Spitzer <arthapex@gmail.com>, 2010.
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: batti 0.3.7\n"
@@ -27,7 +27,7 @@ msgstr "Ruhezustand"
 
 #: src/BatteryMonitor.py:129
 msgid "Battery Monitor"
-msgstr ""
+msgstr "Batterieladeanzeige"
 
 #: src/Battery.py:85
 #, python-format
@@ -53,9 +53,7 @@ msgstr "<b>%s</b> Akku-Laufzeit verbleibend"
 msgid ""
 "Charging battery\n"
 "Battery level: %s%%"
-msgstr ""
-"Akku wird geladen"
-"Ladezustand: %s%%"
+msgstr "Akku wird geladenLadezustand: %s%%"
 
 #: src/Battery.py:115
 msgid "Charging battery"
