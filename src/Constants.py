@@ -18,7 +18,7 @@
 '''
 
 NAME = 'batti'
-VERSION = '0.3.6'
+VERSION = '0.3.7'
 DESCRIPTION = 'A battery monitor for the system tray'
 AUTHOR = 'Arthur Spitzer'
 AUTHOR_EMAIL = 'arthapex@gmail.com'
