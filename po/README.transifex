@@ -4,8 +4,8 @@ Transifex.net Token Verification
 The list of tokens bellow guarantee the respective users to be able to enable 
 submission on components using the following repository url:
 
-git@gitorious.org:arthapex/batti.git
+git@gitorious.org:transifex/repo.git
 
 Tokens:
 
-CMtZ8WYFZC8qc2pxrZkRegNDyVwcVncf / arthapex
+bGVgzdrLxq5YSyDAF9zZYF4KrecgQSn9 / arthapex
