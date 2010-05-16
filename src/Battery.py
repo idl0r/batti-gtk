@@ -291,7 +291,6 @@ class UPowerBattery(Battery):
             info._state = STATE_UNKNOWN
         
         info._time = self.__properties.Get(self.dbus_iface, 'TimeToEmpty')
-        info._time = 5678
    
         precise_charge = self.__properties.Get(self.dbus_iface, 'Percentage')
         info._percentage = int(float(str(precise_charge)))
