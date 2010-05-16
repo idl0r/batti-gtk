@@ -50,7 +50,7 @@ class Battery(object):
         self.__systray = gtk.StatusIcon()
         self.__notifer = Notificator()
         
-        self.__shown_on_ac = False
+        self.__shown_charging = False
         self.__shown_on_bat = False
         self.__shown_bat_low = False
         self.__shown_bat_critical = False
@@ -82,68 +82,74 @@ class Battery(object):
         self._set_icon_visibility(info._present)
         
         if info._time == 0:
-            tooltip = _("Battery Level: %s%%") % (info._percentage)
+            tooltip = _("Battery level: %s%%") % (info._percentage)
             notification = tooltip
         else:
-            tooltip = _("Battery Level: %s%% \nApproximately %s remaining") % (info._percentage, self._str_time(info._time))
-            notification = _("Approximately <b>%s</b> remaining") % self._str_time(info._time)
+            time_str = self._str_time(info._time)
+            tooltip = _("Battery level: %s%%\nProviding power for approximately %s") % (info._percentage, time_str)
+            notification = _("Power for approximately <b>%s</b> remaining") % time_str
         
         if info._state == STATE_CHARGING:
-            self.__systray.set_tooltip(_("Charging this battery \nBattery Level: %s%%") % info._percentage)
+            self.__systray.set_tooltip(_("Charging battery\nBattery level: %s%%") % info._percentage)
             if info._percentage > 90:
-                self.__set_tray_icon('batti-charging-100')
+                icon = 'batti-charging-100'
             elif info._percentage > 70:
-                self.__set_tray_icon('batti-charging-080')
+                icon = 'batti-charging-080'
             elif info._percentage > 50:
-                self.__set_tray_icon('batti-charging-060')
+                icon = 'batti-charging-060'
             elif info._percentage > 30:
-                self.__set_tray_icon('batti-charging-040')
+                icon = 'batti-charging-040'
             elif info._percentage > 10:
-                self.__set_tray_icon('batti-charging-020')
+                icon = 'batti-charging-020'
             else:
-                self.__set_tray_icon('batti-charging-000')
-            self.__systray.set_blinking(False)
-            self.__shown_bat_critical = False
-            self.__shown_bat_low = False
-            if not self.__shown_on_ac:
-                self._notify(False, 'battery_plugged', _('Charging this battery'), _("You are currently running on AC"))
-                self.__shown_on_ac = True
+                icon = 'batti-charging-000'
+            self.__set_tray_icon(icon)
+            
+            self.__shown_bat_charged = False
+            if not self.__shown_charging:
+                self.__systray.set_blinking(False)
+                self.__shown_bat_critical = False
+                self.__shown_bat_low = False
+                self.__shown_charging = True
                 self.__shown_on_bat = False
+                self._notify(False, icon, _('Charging battery'), notification)
                 
         elif info._state == STATE_DISCHARGING:
             self.__systray.set_tooltip(tooltip)
-            self.__shown_bat_charged = False
-            if not self.__shown_on_bat:
-                self._notify(False, 'battery_full', _("On Battery"), _("AC adapter unplugged, running on battery"))
-                self.__shown_on_ac = False
-                self.__shown_on_bat = True
             if info._percentage > 90:
-                self.__set_tray_icon('batti-100')
+                icon = 'batti-100'
             elif info._percentage > 70:
-                self.__set_tray_icon('batti-080')
+                icon = 'batti-080'
             elif info._percentage > 50:
-                self.__set_tray_icon('batti-060')
+                icon = 'batti-060'
             elif info._percentage > 30:
-                self.__set_tray_icon('batti-040')
+                icon = 'batti-040'
             elif info._percentage > 10:
-                self.__set_tray_icon('batti-020')
+                icon = 'batti-020'
             elif info._percentage > 5:
-                self.__set_tray_icon('batti-000')
+                icon = 'batti-000'
                 if not self.__shown_bat_low:
-                    self._notify(True, 'batti-000', _("Low Battery"), notification)
+                    self._notify(True, icon, _('Low battery level'), notification)
                     self.__shown_bat_low = True
             else:
-                self.__set_tray_icon('batti-empty')
+                icon = 'batti-empty'
                 self.__systray.set_blinking(True)
                 if not self.__shown_bat_critical:
-                    self._notify(True, "batti-empty", _("Critical Battery"), notification)
+                    self._notify(True, icon, _('Critical battery level'), notification)
                     self.__shown_bat_critical = True
+            self.__set_tray_icon(icon)
+            self.__shown_bat_charged = False
+            if not self.__shown_on_bat:
+                self._notify(False, icon, _("Discharging battery"), notification)
+                self.__shown_charging = False
+                self.__shown_on_bat = True
                     
-        elif (not self.__shown_bat_charged) and (info._state == STATE_CHARGED):
-            self.__systray.set_tooltip(_("Charged\n%s") % tooltip)
+        elif info._state == STATE_CHARGED:
+            self.__systray.set_tooltip(_('Battery charged\n%s') % tooltip)
             self.__set_tray_icon('batti-charged')
-            self._notify(False, 'batti-charged', _('Battery charged'), notification)
-            self.__shown_bat_charged = True
+            if not self.__shown_bat_charged:
+                self._notify(False, 'batti-charged', _('Battery charged'), notification)
+                self.__shown_bat_charged = True
                      
     
     def __set_tray_icon(self, icon_name):
@@ -176,7 +182,7 @@ class Battery(object):
     
     def _str_time(self, seconds):
         if seconds < 0:
-            return _('unknown')
+            return _('unknown time')
        
         minutes = seconds / 60
         hours = minutes / 60

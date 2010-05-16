@@ -1,3 +1,6 @@
+ - typo was %s%%% as a correction of %s\%. Should be %s%%
+ - UPowerBackend: don't save the dbus interface as a local variable. Get the interface from the session-bus every time it is needed, instead
+
 batti-0.3.6
  - fixed DBusException handling on hibernate
  - Fix typo (issue #2)

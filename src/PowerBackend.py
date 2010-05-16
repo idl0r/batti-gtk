@@ -228,8 +228,8 @@ class UPowerBackend(PowerBackend):
     
     def __device_removed(self, udi):
         try:
-            halbat = self.__batteries.pop(udi)
-            halbat.destroy()
+            bat = self.__batteries.pop(udi)
+            bat.destroy()
         except KeyError:
             pass
     
