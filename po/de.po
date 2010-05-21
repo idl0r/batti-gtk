@@ -46,14 +46,16 @@ msgstr ""
 #: src/Battery.py:90
 #, python-format
 msgid "Power for approximately <b>%s</b> remaining"
-msgstr "<b>%s</b> Akku-Laufzeit verbleibend"
+msgstr "Ungefähr <b>%s</b> Akku-Laufzeit verbleibend"
 
 #: src/Battery.py:93
 #, python-format
 msgid ""
 "Charging battery\n"
 "Battery level: %s%%"
-msgstr "Akku wird geladenLadezustand: %s%%"
+msgstr ""
+"Akku wird geladen\n"
+"Ladezustand: %s%%"
 
 #: src/Battery.py:115
 msgid "Charging battery"
@@ -82,11 +84,11 @@ msgstr ""
 
 #: src/Battery.py:151
 msgid "Battery charged"
-msgstr "Akku vollstandig geladen"
+msgstr "Akku vollständig geladen"
 
 #: src/Battery.py:185
 msgid "unknown time"
-msgstr "unbekannte Restzeit"
+msgstr "unbekannte Restdauer"
 
 #: src/Battery.py:192
 msgid "Hour"
