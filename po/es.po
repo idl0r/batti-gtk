@@ -1,0 +1,105 @@
+# Spanish translation file.
+# Copyright (C) 2010
+# This file is distributed under the same license as the Batti package.
+# Ricardo A. Hermosilla Carrillo <ra.hermosillac@gmail.com>
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: batti 0.3.7\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2010-05-16 15:19+0200\n"
+"PO-Revision-Date: 2010-09-13 21:50-0400\n"
+"Last-Translator: Ricardo A. Hermosilla Carrillo <ra.hermosillac@gmail.com>\n"
+"Language-Team: SPANISH <ES@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/BatteryMonitor.py:83
+msgid "Suspend"
+msgstr "Suspender"
+
+#: src/BatteryMonitor.py:89
+msgid "Hibernate"
+msgstr "Hibernar"
+
+#: src/BatteryMonitor.py:129
+msgid "Battery Monitor"
+msgstr "Monitor de Batería"
+
+#: src/Battery.py:85
+#, python-format
+msgid "Battery level: %s%%"
+msgstr "Nivel de Batería: %s%%"
+
+#: src/Battery.py:89
+#, python-format
+msgid ""
+"Battery level: %(level)s%%\n"
+"Providing power for approximately %(time)s"
+msgstr ""
+"Nivel de Batería: %(level)s%%\n"
+"Tiempo aproximado de duración: %(time)s"
+
+#: src/Battery.py:90
+#, python-format
+msgid "Power for approximately <b>%s</b> remaining"
+msgstr "Tiempo restante de duración: <b>%s</b>"
+
+#: src/Battery.py:93
+#, python-format
+msgid ""
+"Charging battery\n"
+"Battery level: %s%%"
+msgstr ""
+"Cargando Batería\n"
+"Nivel de Carga: %s%%"
+
+#: src/Battery.py:115
+msgid "Charging battery"
+msgstr "Cargand Batería"
+
+#: src/Battery.py:132
+msgid "Low battery level"
+msgstr "Nivel de carga bajo"
+
+#: src/Battery.py:138
+msgid "Critical battery level"
+msgstr "Nivel de carga crítico"
+
+#: src/Battery.py:143
+msgid "Discharging battery"
+msgstr "Descargando Batería"
+
+#: src/Battery.py:148
+#, python-format
+msgid ""
+"Battery charged\n"
+"%s"
+msgstr ""
+"Batería cargada\n"
+"%s"
+
+#: src/Battery.py:151
+msgid "Battery charged"
+msgstr "Batería cargada"
+
+#: src/Battery.py:185
+msgid "unknown time"
+msgstr "tiempo desconocido"
+
+#: src/Battery.py:192
+msgid "Hour"
+msgstr "Hora"
+
+#: src/Battery.py:192
+msgid "Hours"
+msgstr "Horas"
+
+#: src/Battery.py:192
+msgid "Minute"
+msgstr "Minuto"
+
+#: src/Battery.py:192
+msgid "Minutes"
+msgstr "Minutos"
