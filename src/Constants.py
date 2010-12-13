@@ -19,7 +19,7 @@
 
 NAME = 'batti'
 VERSION = '0.3.8'
-DESCRIPTION = 'A battery monitor for the system tray'
+DESCRIPTION = 'Battery monitor for the system tray'
 AUTHOR = 'Arthur Spitzer'
 AUTHOR_EMAIL = 'arthapex@gmail.com'
 URL = 'http://code.google.com/p/batti-gtk'

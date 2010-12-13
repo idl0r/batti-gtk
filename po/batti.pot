@@ -6,12 +6,13 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: batti 0.3.7\n"
+"Project-Id-Version: batti 0.3.8\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-05-16 15:19+0200\n"
+"POT-Creation-Date: 2010-12-13 16:25+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -24,7 +25,7 @@ msgstr ""
 msgid "Hibernate"
 msgstr ""
 
-#: src/BatteryMonitor.py:129
+#: src/BatteryMonitor.py:132
 msgid "Battery Monitor"
 msgstr ""
 
@@ -52,49 +53,49 @@ msgid ""
 "Battery level: %s%%"
 msgstr ""
 
-#: src/Battery.py:115
+#: src/Battery.py:111
 msgid "Charging battery"
 msgstr ""
 
-#: src/Battery.py:132
+#: src/Battery.py:124
 msgid "Low battery level"
 msgstr ""
 
-#: src/Battery.py:138
+#: src/Battery.py:130
 msgid "Critical battery level"
 msgstr ""
 
-#: src/Battery.py:143
+#: src/Battery.py:135
 msgid "Discharging battery"
 msgstr ""
 
-#: src/Battery.py:148
+#: src/Battery.py:140
 #, python-format
 msgid ""
 "Battery charged\n"
 "%s"
 msgstr ""
 
-#: src/Battery.py:151
+#: src/Battery.py:143
 msgid "Battery charged"
 msgstr ""
 
-#: src/Battery.py:185
+#: src/Battery.py:177
 msgid "unknown time"
 msgstr ""
 
-#: src/Battery.py:192
+#: src/Battery.py:184
 msgid "Hour"
 msgstr ""
 
-#: src/Battery.py:192
+#: src/Battery.py:184
 msgid "Hours"
 msgstr ""
 
-#: src/Battery.py:192
+#: src/Battery.py:184
 msgid "Minute"
 msgstr ""
 
-#: src/Battery.py:192
+#: src/Battery.py:184
 msgid "Minutes"
 msgstr ""

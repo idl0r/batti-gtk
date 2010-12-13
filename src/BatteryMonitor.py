@@ -126,10 +126,10 @@ And this is the error for DeviceKit.Power:
 
     def about(self, button):
         about_dg = gtk.AboutDialog()
-        about_dg.set_name(_("Battery Monitor"))
+        about_dg.set_name("Batti")
         about_dg.set_program_name(Constants.NAME)
         about_dg.set_version(Constants.VERSION)
-        about_dg.set_comments(Constants.DESCRIPTION)
+        about_dg.set_comments(_("Battery Monitor"))
         about_dg.set_license(Constants.LICENSE_TEXT)
         about_dg.set_authors(['%s <%s>' % (Constants.AUTHOR, Constants.AUTHOR_EMAIL)])
         about_dg.connect("response", lambda d, r: d.destroy())
