@@ -177,6 +177,18 @@ class UPowerBackend(PowerBackend):
         self.__bus.add_signal_receiver(self.__device_removed, 'DeviceRemoved',
              self.dbus_interface, self.dbus_service, self.dbus_object)
         self.__mc_action = None
+        
+        properties = dbus.Interface(iface, 'org.freedesktop.DBus.Properties')
+
+        if properties.Get(self.dbus_interface, 'CanSuspend'):
+            self.__can_suspend = True
+        else:
+            self.__can_suspend = False
+        
+        if properties.Get(self.dbus_interface, 'CanHibernate'):
+            self.__can_hibernate = True
+        else:
+            self.__can_hibernate = False
     
     
     def __get_interface(self):
@@ -190,10 +202,10 @@ class UPowerBackend(PowerBackend):
             
          
     def can_suspend(self):   
-        return self.__get_interface().SuspendAllowed()
+        return self.__can_suspend and self.__get_interface().SuspendAllowed()
 
     def can_hibernate(self):
-        return self.__get_interface().HibernateAllowed()
+        return self.__can_hibernate and self.__get_interface().HibernateAllowed()
 
     def suspend(self):
         self.__get_interface().Suspend()

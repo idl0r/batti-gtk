@@ -91,18 +91,14 @@ class Battery(object):
         
         if info._state == STATE_CHARGING:
             self.__systray.set_tooltip(_('Charging battery\nBattery level: %s%%') % info._percentage)
-            if info._percentage > 90:
-                icon = 'batti-charging-100'
-            elif info._percentage > 70:
-                icon = 'batti-charging-080'
-            elif info._percentage > 50:
-                icon = 'batti-charging-060'
-            elif info._percentage > 30:
-                icon = 'batti-charging-040'
-            elif info._percentage > 10:
-                icon = 'batti-charging-020'
+            if info._percentage > 80:
+                icon = 'battery-full-charging'
+            elif info._percentage > 40:
+                icon = 'battery-good-charging'
+            elif info._percentage > 20:
+                icon = 'battery-low-charging'
             else:
-                icon = 'batti-charging-000'
+                icon = 'battery-caution-charging'
             self.__set_tray_icon(icon)
             
             self.__shown_bat_charged = False
@@ -116,23 +112,19 @@ class Battery(object):
                 
         elif info._state == STATE_DISCHARGING:
             self.__systray.set_tooltip(tooltip)
-            if info._percentage > 90:
-                icon = 'batti-100'
-            elif info._percentage > 70:
-                icon = 'batti-080'
-            elif info._percentage > 50:
-                icon = 'batti-060'
-            elif info._percentage > 30:
-                icon = 'batti-040'
-            elif info._percentage > 10:
-                icon = 'batti-020'
+            if info._percentage > 80:
+                icon = 'battery-full'
+            elif info._percentage > 40:
+                icon = 'battery-good'
+            elif info._percentage > 20:
+                icon = 'battery-low'
             elif info._percentage > 5:
-                icon = 'batti-000'
+                icon = 'battery-caution'
                 if not self.__shown_bat_low:
                     self._notify(True, icon, _('Low battery level'), notification)
                     self.__shown_bat_low = True
             else:
-                icon = 'batti-empty'
+                icon = 'battery-empty'
                 self.__systray.set_blinking(True)
                 if not self.__shown_bat_critical:
                     self._notify(True, icon, _('Critical battery level'), notification)
@@ -146,9 +138,9 @@ class Battery(object):
                     
         elif info._state == STATE_CHARGED:
             self.__systray.set_tooltip(_('Battery charged\n%s') % tooltip)
-            self.__set_tray_icon('batti-charged')
+            self.__set_tray_icon('battery-full')
             if not self.__shown_bat_charged:
-                self._notify(False, 'batti-charged', _('Battery charged'), notification)
+                self._notify(False, 'battery-full-charging', _('Battery charged'), notification)
                 self.__shown_bat_charged = True
                      
     
