@@ -1,0 +1,107 @@
+# Russian translations for PACKAGE package
+# Russian messages for PACKAGE.
+# Copyright (C) 2010 THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# Alexandr Shmakov <uno.kms@gmail.com>, 2010.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: batti 0.3.7\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2010-09-02 20:20+1100\n"
+"PO-Revision-Date: 2010-09-02 20:20+1100\n"
+"Last-Translator: Alexandr Shmakov <uno.kms@gmail.com>\n"
+"Language-Team: Russian\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: src/BatteryMonitor.py:83
+msgid "Suspend"
+msgstr "Ждущий режим"
+
+#: src/BatteryMonitor.py:89
+msgid "Hibernate"
+msgstr "Спящий режим"
+
+#: src/BatteryMonitor.py:129
+msgid "Battery Monitor"
+msgstr "Монитор батареи"
+
+#: src/Battery.py:85
+#, python-format
+msgid "Battery level: %s%%"
+msgstr "Уровень заряда: %s%%"
+
+#: src/Battery.py:89
+#, python-format
+msgid ""
+"Battery level: %(level)s%%\n"
+"Providing power for approximately %(time)s"
+msgstr ""
+"Уровень заряда: %(level)s%%\n"
+"Оставшееся время работы: %(time)s"
+
+#: src/Battery.py:90
+#, python-format
+msgid "Power for approximately <b>%s</b> remaining"
+msgstr "Заряда осталось на <b>%s</b>"
+
+#: src/Battery.py:93
+#, python-format
+msgid ""
+"Charging battery\n"
+"Battery level: %s%%"
+msgstr ""
+"Батарея заряжается\n"
+"Уровень заряда: %s%%"
+
+#: src/Battery.py:115
+msgid "Charging battery"
+msgstr "Батарея заряжается"
+
+#: src/Battery.py:132
+msgid "Low battery level"
+msgstr "Низкий уровень заряда"
+
+#: src/Battery.py:138
+msgid "Critical battery level"
+msgstr "Критический уровень заряда"
+
+#: src/Battery.py:143
+msgid "Discharging battery"
+msgstr "Внешнее питание отключено"
+
+#: src/Battery.py:148
+#, python-format
+msgid ""
+"Battery charged\n"
+"%s"
+msgstr ""
+"Батарея заряжена\n"
+"%s"
+
+#: src/Battery.py:151
+msgid "Battery charged"
+msgstr "Батарея заряжена"
+
+#: src/Battery.py:185
+msgid "unknown time"
+msgstr "неопределенное время"
+
+#: src/Battery.py:192
+msgid "Hour"
+msgstr "Час"
+
+#: src/Battery.py:192
+msgid "Hours"
+msgstr "Часов"
+
+#: src/Battery.py:192
+msgid "Minute"
+msgstr "Минута"
+
+#: src/Battery.py:192
+msgid "Minutes"
+msgstr "Минут"
