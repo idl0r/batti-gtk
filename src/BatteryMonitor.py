@@ -100,7 +100,7 @@ And this is the error for DeviceKit.Power:
             self.__rmenu = gtk.Menu()
             about_menu = gtk.ImageMenuItem(gtk.STOCK_ABOUT)
             about_menu.connect('activate', self.about)
-            exit_menu = gtk.ImageMenuItem(gtk.STOCK_CLOSE)
+            exit_menu = gtk.ImageMenuItem(gtk.STOCK_QUIT)
             exit_menu.connect('activate', self.close)
             self.__rmenu.append(about_menu)
             self.__rmenu.append(exit_menu)
