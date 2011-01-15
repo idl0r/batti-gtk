@@ -1,19 +1,37 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: batti 0.3.7\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-01-15 17:25+0100\n"
+"PO-Revision-Date: 2010-10-10 12:51+0100\n"
+"Last-Translator: Oscar Carlsson <oscar.carlsson@gmail.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
 #: src/BatteryMonitor.py:83
 msgid "Suspend"
-msgstr ""
+msgstr "Viloläge"
 
 #: src/BatteryMonitor.py:89
 msgid "Hibernate"
-msgstr ""
+msgstr "Vänteläge"
 
 #: src/BatteryMonitor.py:132
 msgid "Battery Monitor"
-msgstr ""
+msgstr "Batteriövervakaren"
 
 #: src/Battery.py:85
 #, python-format
 msgid "Battery level: %s%%"
-msgstr ""
+msgstr "Batterinivå: %s%%"
 
 #: src/Battery.py:89
 #, python-format
@@ -21,11 +39,13 @@ msgid ""
 "Battery level: %(level)s%%\n"
 "Providing power for approximately %(time)s"
 msgstr ""
+"Batterinivå: %(level)s%%\n"
+"Återstående batteritid: %(time)s"
 
 #: src/Battery.py:90
 #, python-format
 msgid "Power for approximately <b>%s</b> remaining"
-msgstr ""
+msgstr "Återstående batteritid: <b>%s</b>"
 
 #: src/Battery.py:94
 #, python-format
@@ -33,22 +53,24 @@ msgid ""
 "Charging battery\n"
 "Battery level: %s%%"
 msgstr ""
+"Batteri laddas upp\n"
+"Batterinivå: %s%%"
 
 #: src/Battery.py:111
 msgid "Charging battery"
-msgstr ""
+msgstr "Batteri laddas upp"
 
 #: src/Battery.py:124
 msgid "Low battery level"
-msgstr ""
+msgstr "Låg batterinivå"
 
 #: src/Battery.py:130
 msgid "Critical battery level"
-msgstr ""
+msgstr "Kritisk batterinivå"
 
 #: src/Battery.py:135
 msgid "Discharging battery"
-msgstr ""
+msgstr "Batteriet laddas ur"
 
 #: src/Battery.py:140
 #, python-format
@@ -56,27 +78,33 @@ msgid ""
 "Battery charged\n"
 "%s"
 msgstr ""
+"Batteri uppladdat\n"
+"%s"
 
 #: src/Battery.py:144
 msgid "Battery charged"
-msgstr ""
+msgstr "Batteri uppladdat"
 
 #: src/Battery.py:178
 msgid "unknown time"
-msgstr ""
+msgstr "okänd tid"
 
 #: src/Battery.py:185
 msgid "Hour"
-msgstr ""
+msgstr "timme"
 
 #: src/Battery.py:185
 msgid "Hours"
-msgstr ""
+msgstr "timmar"
 
 #: src/Battery.py:185
 msgid "Minute"
-msgstr ""
+msgstr "minut"
 
 #: src/Battery.py:185
+#, fuzzy
 msgid "Minutes"
-msgstr ""
+msgstr "minut"
+
+#~ msgid "minutes"
+#~ msgstr "Minuter"
