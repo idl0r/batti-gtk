@@ -90,7 +90,7 @@ class Battery(object):
             notification = _('Power for approximately <b>%s</b> remaining') % time_str
         
         if info._state == STATE_CHARGING:
-			self.__systray.set_blinking(False)
+            self.__systray.set_blinking(False)
             self.__systray.set_tooltip(_('Charging battery\nBattery level: %s%%') % info._percentage)
             if info._percentage > 80:
                 icon = 'battery-full-charging'
@@ -139,7 +139,7 @@ class Battery(object):
         elif info._state == STATE_CHARGED:
             self.__systray.set_tooltip(_('Battery charged\n%s') % tooltip)
             self.__set_tray_icon('battery-full')
-			self.__systray.set_blinking(False)
+            self.__systray.set_blinking(False)
             if not self.__shown_bat_charged:
                 self._notify(False, 'battery-full-charging', _('Battery charged'), notification)
                 self.__shown_bat_charged = True
