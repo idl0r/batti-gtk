@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: batti 0.3.7\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-01-15 17:25+0100\n"
+"POT-Creation-Date: 2011-06-26 13:03+0200\n"
 "PO-Revision-Date: 2010-09-02 20:20+1100\n"
 "Last-Translator: Alexandr Shmakov <uno.kms@gmail.com>\n"
 "Language-Team: Russian\n"
@@ -17,61 +17,42 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/BatteryMonitor.py:83
-msgid "Suspend"
-msgstr "Ждущий режим"
+#: src/BatteryMonitor.py:45
+msgid ""
+" \n"
+"\\Neither UPower nor DeviceKit.Power could be initialized!\n"
+"\\This can have multiple reasons.\n"
+"Here is the error for UPower:\n"
+"\n"
+"\\t{0}\n"
+"\n"
+"\\And this is the error for DeviceKit.Power:\n"
+"\n"
+"\\t{1}\n"
+"\n"
+msgstr ""
 
-#: src/BatteryMonitor.py:89
-msgid "Hibernate"
-msgstr "Спящий режим"
+#: src/Battery.py:184
+#, fuzzy, python-format
+msgid "%d Hour"
+msgid_plural "%d Hours"
+msgstr[0] "Час"
+msgstr[1] "Час"
 
-#: src/BatteryMonitor.py:132
+#: src/Battery.py:184
+#, fuzzy, python-format
+msgid "%d Minutes"
+msgid_plural "%d Minutes"
+msgstr[0] "Минут"
+msgstr[1] "Минут"
+
+#: src/BatteryMonitor.py:121
 msgid "Battery Monitor"
 msgstr "Монитор батареи"
 
-#: src/Battery.py:85
-#, python-format
-msgid "Battery level: %s%%"
-msgstr "Уровень заряда: %s%%"
-
-#: src/Battery.py:89
-#, python-format
-msgid ""
-"Battery level: %(level)s%%\n"
-"Providing power for approximately %(time)s"
-msgstr ""
-"Уровень заряда: %(level)s%%\n"
-"Оставшееся время работы: %(time)s"
-
-#: src/Battery.py:90
-#, python-format
-msgid "Power for approximately <b>%s</b> remaining"
-msgstr "Заряда осталось на <b>%s</b>"
-
-#: src/Battery.py:94
-#, python-format
-msgid ""
-"Charging battery\n"
-"Battery level: %s%%"
-msgstr ""
-"Батарея заряжается\n"
-"Уровень заряда: %s%%"
-
-#: src/Battery.py:111
-msgid "Charging battery"
-msgstr "Батарея заряжается"
-
-#: src/Battery.py:124
-msgid "Low battery level"
-msgstr "Низкий уровень заряда"
-
-#: src/Battery.py:130
-msgid "Critical battery level"
-msgstr "Критический уровень заряда"
-
-#: src/Battery.py:135
-msgid "Discharging battery"
-msgstr "Внешнее питание отключено"
+#: src/Battery.py:144
+msgid "Battery charged"
+msgstr "Батарея заряжена"
 
 #: src/Battery.py:140
 #, python-format
@@ -82,26 +63,89 @@ msgstr ""
 "Батарея заряжена\n"
 "%s"
 
-#: src/Battery.py:144
-msgid "Battery charged"
-msgstr "Батарея заряжена"
+#: src/Battery.py:89
+#, python-format
+msgid ""
+"Battery level: %(level)s%%\n"
+"Providing power for approximately %(time)s"
+msgstr ""
+"Уровень заряда: %(level)s%%\n"
+"Оставшееся время работы: %(time)s"
+
+#: src/Battery.py:85
+#, python-format
+msgid "Battery level: %s%%"
+msgstr "Уровень заряда: %s%%"
+
+#: src/Constants.py:24
+msgid "Battery monitor for the system tray"
+msgstr ""
+
+#: batti:38
+msgid ""
+"Can't import batti's BatteryMonitor module\n"
+"Exiting\n"
+msgstr ""
+
+#: src/Battery.py:111
+msgid "Charging battery"
+msgstr "Батарея заряжается"
+
+#: src/Battery.py:94
+#, python-format
+msgid ""
+"Charging battery\n"
+"Battery level: %s%%"
+msgstr ""
+"Батарея заряжается\n"
+"Уровень заряда: %s%%"
+
+#: src/Battery.py:130
+msgid "Critical battery level"
+msgstr "Критический уровень заряда"
+
+#: src/Battery.py:135
+msgid "Discharging battery"
+msgstr "Внешнее питание отключено"
+
+#: src/BatteryMonitor.py:78
+msgid "Hibernate"
+msgstr "Спящий режим"
+
+#: src/Battery.py:124
+msgid "Low battery level"
+msgstr "Низкий уровень заряда"
+
+#: batti:45
+msgid "Only one instance is allowed\n"
+msgstr ""
+
+#: src/Battery.py:90
+#, python-format
+msgid "Power for approximately <b>%s</b> remaining"
+msgstr "Заряда осталось на <b>%s</b>"
+
+#: src/BatteryMonitor.py:72
+msgid "Suspend"
+msgstr "Ждущий режим"
+
+#: batti:29
+msgid ""
+"This program needs dbus-python\n"
+"Exiting\n"
+msgstr ""
+
+#: src/Notificator.py:60
+#, fuzzy
+msgid "battery-monitor"
+msgstr "Монитор батареи"
 
 #: src/Battery.py:178
 msgid "unknown time"
 msgstr "неопределенное время"
 
-#: src/Battery.py:185
-msgid "Hour"
-msgstr "Час"
+#~ msgid "Hours"
+#~ msgstr "Часов"
 
-#: src/Battery.py:185
-msgid "Hours"
-msgstr "Часов"
-
-#: src/Battery.py:185
-msgid "Minute"
-msgstr "Минута"
-
-#: src/Battery.py:185
-msgid "Minutes"
-msgstr "Минут"
+#~ msgid "Minute"
+#~ msgstr "Минута"

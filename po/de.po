@@ -6,10 +6,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: batti 0.3.7\n"
+"Project-Id-Version: batti 0.3.9\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-01-15 17:25+0100\n"
-"PO-Revision-Date: 2010-05-17 11:12+0200\n"
+"POT-Creation-Date: 2011-06-26 13:03+0200\n"
+"PO-Revision-Date: 2011-06-26 11:12+0200\n"
 "Last-Translator: Arthur Spitzer <arthapex@gmail.com>\n"
 "Language-Team: Deutsch < >\n"
 "Language: \n"
@@ -17,61 +17,53 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding:  \n"
 
-#: src/BatteryMonitor.py:83
-msgid "Suspend"
-msgstr "Bereitschaftsmodus"
+#: src/BatteryMonitor.py:45
+msgid ""
+" \n"
+"\\Neither UPower nor DeviceKit.Power could be initialized!\n"
+"\\This can have multiple reasons.\n"
+"Here is the error for UPower:\n"
+"\n"
+"\\t{0}\n"
+"\n"
+"\\And this is the error for DeviceKit.Power:\n"
+"\n"
+"\\t{1}\n"
+"\n"
+msgstr ""
+" \n"
+"\\Weder UPower noch DeviceKit.Power konnten initialisiert werden!\n"
+"\\Für diesen Umstand kann es verschiedene Gründe geben.\n"
+"Nachfolgend ist der Fehler von UPower:\n"
+"\n"
+"\\t{0}\n"
+"\n"
+"\\Nachfolgend ist der Fehler von DeviceKit.Power:\n"
+"\n"
+"\\t{1}\n"
+"\n"
 
-#: src/BatteryMonitor.py:89
-msgid "Hibernate"
-msgstr "Ruhezustand"
+#: src/Battery.py:184
+#, fuzzy, python-format
+msgid "%d Hour"
+msgid_plural "%d Hours"
+msgstr[0] "Stunde"
+msgstr[1] "Stunden"
 
-#: src/BatteryMonitor.py:132
+#: src/Battery.py:184
+#, fuzzy, python-format
+msgid "%d Minutes"
+msgid_plural "%d Minutes"
+msgstr[0] "Minuten"
+msgstr[1] "Minuten"
+
+#: src/BatteryMonitor.py:121
 msgid "Battery Monitor"
 msgstr "Batterieladeanzeige"
 
-#: src/Battery.py:85
-#, python-format
-msgid "Battery level: %s%%"
-msgstr "Ladezustand: %s%%"
-
-#: src/Battery.py:89
-#, python-format
-msgid ""
-"Battery level: %(level)s%%\n"
-"Providing power for approximately %(time)s"
-msgstr ""
-"Ladezustand: %(level)s%%\n"
-"Ermöglicht %(time)s Akku-Laufzeit"
-
-#: src/Battery.py:90
-#, python-format
-msgid "Power for approximately <b>%s</b> remaining"
-msgstr "Ungefähr <b>%s</b> Akku-Laufzeit verbleibend"
-
-#: src/Battery.py:94
-#, python-format
-msgid ""
-"Charging battery\n"
-"Battery level: %s%%"
-msgstr ""
-"Akku wird geladen\n"
-"Ladezustand: %s%%"
-
-#: src/Battery.py:111
-msgid "Charging battery"
-msgstr "Akku wird geladen"
-
-#: src/Battery.py:124
-msgid "Low battery level"
-msgstr "Niedriger Akkuladezustand"
-
-#: src/Battery.py:130
-msgid "Critical battery level"
-msgstr "Kritischer Akkuladezustand"
-
-#: src/Battery.py:135
-msgid "Discharging battery"
-msgstr "Akku wird entladen"
+#: src/Battery.py:144
+msgid "Battery charged"
+msgstr "Akku vollständig geladen"
 
 #: src/Battery.py:140
 #, python-format
@@ -82,26 +74,89 @@ msgstr ""
 "Akku vollständig geladen\n"
 "%s"
 
-#: src/Battery.py:144
-msgid "Battery charged"
-msgstr "Akku vollständig geladen"
+#: src/Battery.py:89
+#, python-format
+msgid ""
+"Battery level: %(level)s%%\n"
+"Providing power for approximately %(time)s"
+msgstr ""
+"Ladezustand: %(level)s%%\n"
+"Ermöglicht %(time)s Akku-Laufzeit"
+
+#: src/Battery.py:85
+#, python-format
+msgid "Battery level: %s%%"
+msgstr "Ladezustand: %s%%"
+
+#: src/Constants.py:24
+msgid "Battery monitor for the system tray"
+msgstr ""
+
+#: batti:38
+msgid ""
+"Can't import batti's BatteryMonitor module\n"
+"Exiting\n"
+msgstr ""
+
+#: src/Battery.py:111
+msgid "Charging battery"
+msgstr "Akku wird geladen"
+
+#: src/Battery.py:94
+#, python-format
+msgid ""
+"Charging battery\n"
+"Battery level: %s%%"
+msgstr ""
+"Akku wird geladen\n"
+"Ladezustand: %s%%"
+
+#: src/Battery.py:130
+msgid "Critical battery level"
+msgstr "Kritischer Akkuladezustand"
+
+#: src/Battery.py:135
+msgid "Discharging battery"
+msgstr "Akku wird entladen"
+
+#: src/BatteryMonitor.py:78
+msgid "Hibernate"
+msgstr "Ruhezustand"
+
+#: src/Battery.py:124
+msgid "Low battery level"
+msgstr "Niedriger Akkuladezustand"
+
+#: batti:45
+msgid "Only one instance is allowed\n"
+msgstr ""
+
+#: src/Battery.py:90
+#, python-format
+msgid "Power for approximately <b>%s</b> remaining"
+msgstr "Ungefähr <b>%s</b> Akku-Laufzeit verbleibend"
+
+#: src/BatteryMonitor.py:72
+msgid "Suspend"
+msgstr "Bereitschaftsmodus"
+
+#: batti:29
+msgid ""
+"This program needs dbus-python\n"
+"Exiting\n"
+msgstr ""
+
+#: src/Notificator.py:60
+#, fuzzy
+msgid "battery-monitor"
+msgstr "Batterieladeanzeige"
 
 #: src/Battery.py:178
 msgid "unknown time"
 msgstr "unbekannte Restdauer"
 
-#: src/Battery.py:185
-msgid "Hour"
-msgstr "Stunde"
+#~ msgid "Hours"
+#~ msgstr "Stunden"
 
-#: src/Battery.py:185
-msgid "Hours"
-msgstr "Stunden"
-
-#: src/Battery.py:185
-msgid "Minute"
-msgstr "Minute"
-
-#: src/Battery.py:185
-msgid "Minutes"
-msgstr "Minuten"
+#~ msgid "Minute"
+#~ msgstr "Minute"
