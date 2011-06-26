@@ -42,13 +42,7 @@ class BatteryMonitor(object):
                 self.__backend = DeviceKitBackend()
                 self.__backend.set_right_popup_menu_action(self.__mc_action)
             except DBusException as e_devkit:
-                sys.stderr.write(_("\" \n\
-Neither UPower nor DeviceKit.Power could be initialized!\n\
-This can have multiple reasons.\nHere is the error for UPower:\n\n\
-   %s\n\n\
-And this is the error for DeviceKit.Power:\n\n\
-    %s\n\n\
-\"") % (e_upower, e_devkit))
+                sys.stderr.write(_(" \n\Neither UPower nor DeviceKit.Power could be initialized!\n\This can have multiple reasons.\nHere is the error for UPower:\n\n\\t{0}\n\n\And this is the error for DeviceKit.Power:\n\n\\t{1}\n\n").format(e_upower, e_devkit))
                 self.close(None)
                 
         
