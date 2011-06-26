@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: batti 0.3.9\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-06-26 13:03+0200\n"
+"POT-Creation-Date: 2011-06-26 13:41+0200\n"
 "PO-Revision-Date: 2011-06-26 11:12+0200\n"
 "Last-Translator: Arthur Spitzer <arthapex@gmail.com>\n"
 "Language-Team: Deutsch < >\n"
@@ -43,14 +43,14 @@ msgstr ""
 "\\t{1}\n"
 "\n"
 
-#: src/Battery.py:184
+#: src/Battery.py:189
 #, fuzzy, python-format
 msgid "%d Hour"
 msgid_plural "%d Hours"
 msgstr[0] "Stunde"
 msgstr[1] "Stunden"
 
-#: src/Battery.py:184
+#: src/Battery.py:189
 #, fuzzy, python-format
 msgid "%d Minutes"
 msgid_plural "%d Minutes"
@@ -61,11 +61,11 @@ msgstr[1] "Minuten"
 msgid "Battery Monitor"
 msgstr "Batterieladeanzeige"
 
-#: src/Battery.py:144
+#: src/Battery.py:149
 msgid "Battery charged"
 msgstr "Akku vollständig geladen"
 
-#: src/Battery.py:140
+#: src/Battery.py:145
 #, python-format
 msgid ""
 "Battery charged\n"
@@ -111,11 +111,11 @@ msgstr ""
 "Akku wird geladen\n"
 "Ladezustand: %s%%"
 
-#: src/Battery.py:130
+#: src/Battery.py:135
 msgid "Critical battery level"
 msgstr "Kritischer Akkuladezustand"
 
-#: src/Battery.py:135
+#: src/Battery.py:140
 msgid "Discharging battery"
 msgstr "Akku wird entladen"
 
@@ -123,7 +123,7 @@ msgstr "Akku wird entladen"
 msgid "Hibernate"
 msgstr "Ruhezustand"
 
-#: src/Battery.py:124
+#: src/Battery.py:130
 msgid "Low battery level"
 msgstr "Niedriger Akkuladezustand"
 
@@ -151,7 +151,7 @@ msgstr ""
 msgid "battery-monitor"
 msgstr "Batterieladeanzeige"
 
-#: src/Battery.py:178
+#: src/Battery.py:183
 msgid "unknown time"
 msgstr "unbekannte Restdauer"
 

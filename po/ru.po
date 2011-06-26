@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: batti 0.3.7\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-06-26 13:03+0200\n"
+"POT-Creation-Date: 2011-06-26 13:41+0200\n"
 "PO-Revision-Date: 2010-09-02 20:20+1100\n"
 "Last-Translator: Alexandr Shmakov <uno.kms@gmail.com>\n"
 "Language-Team: Russian\n"
@@ -32,14 +32,14 @@ msgid ""
 "\n"
 msgstr ""
 
-#: src/Battery.py:184
+#: src/Battery.py:189
 #, fuzzy, python-format
 msgid "%d Hour"
 msgid_plural "%d Hours"
 msgstr[0] "Час"
 msgstr[1] "Час"
 
-#: src/Battery.py:184
+#: src/Battery.py:189
 #, fuzzy, python-format
 msgid "%d Minutes"
 msgid_plural "%d Minutes"
@@ -50,11 +50,11 @@ msgstr[1] "Минут"
 msgid "Battery Monitor"
 msgstr "Монитор батареи"
 
-#: src/Battery.py:144
+#: src/Battery.py:149
 msgid "Battery charged"
 msgstr "Батарея заряжена"
 
-#: src/Battery.py:140
+#: src/Battery.py:145
 #, python-format
 msgid ""
 "Battery charged\n"
@@ -100,11 +100,11 @@ msgstr ""
 "Батарея заряжается\n"
 "Уровень заряда: %s%%"
 
-#: src/Battery.py:130
+#: src/Battery.py:135
 msgid "Critical battery level"
 msgstr "Критический уровень заряда"
 
-#: src/Battery.py:135
+#: src/Battery.py:140
 msgid "Discharging battery"
 msgstr "Внешнее питание отключено"
 
@@ -112,7 +112,7 @@ msgstr "Внешнее питание отключено"
 msgid "Hibernate"
 msgstr "Спящий режим"
 
-#: src/Battery.py:124
+#: src/Battery.py:130
 msgid "Low battery level"
 msgstr "Низкий уровень заряда"
 
@@ -140,7 +140,7 @@ msgstr ""
 msgid "battery-monitor"
 msgstr "Монитор батареи"
 
-#: src/Battery.py:178
+#: src/Battery.py:183
 msgid "unknown time"
 msgstr "неопределенное время"
 

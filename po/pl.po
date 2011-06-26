@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: batti\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-06-26 13:03+0200\n"
+"POT-Creation-Date: 2011-06-26 13:41+0200\n"
 "PO-Revision-Date: 2011-03-22 15:17+0000\n"
 "Last-Translator: swiezy <s0wiezy@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -33,7 +33,7 @@ msgid ""
 "\n"
 msgstr ""
 
-#: src/Battery.py:184
+#: src/Battery.py:189
 #, fuzzy, python-format
 msgid "%d Hour"
 msgid_plural "%d Hours"
@@ -41,7 +41,7 @@ msgstr[0] "Godzina"
 msgstr[1] "Godzina"
 msgstr[2] "Godzina"
 
-#: src/Battery.py:184
+#: src/Battery.py:189
 #, fuzzy, python-format
 msgid "%d Minutes"
 msgid_plural "%d Minutes"
@@ -53,11 +53,11 @@ msgstr[2] "Minut"
 msgid "Battery Monitor"
 msgstr "Monitor akumulatora"
 
-#: src/Battery.py:144
+#: src/Battery.py:149
 msgid "Battery charged"
 msgstr "Akumulator naładowany"
 
-#: src/Battery.py:140
+#: src/Battery.py:145
 #, python-format
 msgid ""
 "Battery charged\n"
@@ -103,11 +103,11 @@ msgstr ""
 "Ładowanie akumulatora\n"
 "Poziom naładowania akumulatora: %s%%"
 
-#: src/Battery.py:130
+#: src/Battery.py:135
 msgid "Critical battery level"
 msgstr "Krytyczny poziom naładowania akumulatora"
 
-#: src/Battery.py:135
+#: src/Battery.py:140
 msgid "Discharging battery"
 msgstr "Rozładowywanie akumulatora"
 
@@ -115,7 +115,7 @@ msgstr "Rozładowywanie akumulatora"
 msgid "Hibernate"
 msgstr "Hibernuj"
 
-#: src/Battery.py:124
+#: src/Battery.py:130
 msgid "Low battery level"
 msgstr "Niski poziom naładowania akumulatora"
 
@@ -143,7 +143,7 @@ msgstr ""
 msgid "battery-monitor"
 msgstr "Monitor akumulatora"
 
-#: src/Battery.py:178
+#: src/Battery.py:183
 msgid "unknown time"
 msgstr "nieznany czas"
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-06-26 13:03+0200\n"
+"POT-Creation-Date: 2011-06-26 13:41+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -33,14 +33,14 @@ msgid ""
 "\n"
 msgstr ""
 
-#: src/Battery.py:184
+#: src/Battery.py:189
 #, python-format
 msgid "%d Hour"
 msgid_plural "%d Hours"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/Battery.py:184
+#: src/Battery.py:189
 #, python-format
 msgid "%d Minutes"
 msgid_plural "%d Minutes"
@@ -51,11 +51,11 @@ msgstr[1] ""
 msgid "Battery Monitor"
 msgstr ""
 
-#: src/Battery.py:144
+#: src/Battery.py:149
 msgid "Battery charged"
 msgstr ""
 
-#: src/Battery.py:140
+#: src/Battery.py:145
 #, python-format
 msgid ""
 "Battery charged\n"
@@ -95,11 +95,11 @@ msgid ""
 "Battery level: %s%%"
 msgstr ""
 
-#: src/Battery.py:130
+#: src/Battery.py:135
 msgid "Critical battery level"
 msgstr ""
 
-#: src/Battery.py:135
+#: src/Battery.py:140
 msgid "Discharging battery"
 msgstr ""
 
@@ -107,7 +107,7 @@ msgstr ""
 msgid "Hibernate"
 msgstr ""
 
-#: src/Battery.py:124
+#: src/Battery.py:130
 msgid "Low battery level"
 msgstr ""
 
@@ -134,6 +134,6 @@ msgstr ""
 msgid "battery-monitor"
 msgstr ""
 
-#: src/Battery.py:178
+#: src/Battery.py:183
 msgid "unknown time"
 msgstr ""

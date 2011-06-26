@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: batti 0.3.7\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-06-26 13:03+0200\n"
+"POT-Creation-Date: 2011-06-26 13:41+0200\n"
 "PO-Revision-Date: 2010-09-13 21:50-0400\n"
 "Last-Translator: Ricardo A. Hermosilla Carrillo <ra.hermosillac@gmail.com>\n"
 "Language-Team: SPANISH <ES@li.org>\n"
@@ -31,14 +31,14 @@ msgid ""
 "\n"
 msgstr ""
 
-#: src/Battery.py:184
+#: src/Battery.py:189
 #, fuzzy, python-format
 msgid "%d Hour"
 msgid_plural "%d Hours"
 msgstr[0] "Hora"
 msgstr[1] "Hora"
 
-#: src/Battery.py:184
+#: src/Battery.py:189
 #, fuzzy, python-format
 msgid "%d Minutes"
 msgid_plural "%d Minutes"
@@ -49,11 +49,11 @@ msgstr[1] "Minutos"
 msgid "Battery Monitor"
 msgstr "Monitor de Batería"
 
-#: src/Battery.py:144
+#: src/Battery.py:149
 msgid "Battery charged"
 msgstr "Batería cargada"
 
-#: src/Battery.py:140
+#: src/Battery.py:145
 #, python-format
 msgid ""
 "Battery charged\n"
@@ -99,11 +99,11 @@ msgstr ""
 "Cargando Batería\n"
 "Nivel de Carga: %s%%"
 
-#: src/Battery.py:130
+#: src/Battery.py:135
 msgid "Critical battery level"
 msgstr "Nivel de carga crítico"
 
-#: src/Battery.py:135
+#: src/Battery.py:140
 msgid "Discharging battery"
 msgstr "Descargando Batería"
 
@@ -111,7 +111,7 @@ msgstr "Descargando Batería"
 msgid "Hibernate"
 msgstr "Hibernar"
 
-#: src/Battery.py:124
+#: src/Battery.py:130
 msgid "Low battery level"
 msgstr "Nivel de carga bajo"
 
@@ -139,7 +139,7 @@ msgstr ""
 msgid "battery-monitor"
 msgstr "Monitor de Batería"
 
-#: src/Battery.py:178
+#: src/Battery.py:183
 msgid "unknown time"
 msgstr "tiempo desconocido"
 

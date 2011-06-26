@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: batti 0.3.7\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-06-26 13:03+0200\n"
+"POT-Creation-Date: 2011-06-26 13:41+0200\n"
 "PO-Revision-Date: 2010-10-10 12:51+0100\n"
 "Last-Translator: Oscar Carlsson <oscar.carlsson@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -31,14 +31,14 @@ msgid ""
 "\n"
 msgstr ""
 
-#: src/Battery.py:184
+#: src/Battery.py:189
 #, fuzzy, python-format
 msgid "%d Hour"
 msgid_plural "%d Hours"
 msgstr[0] "timme"
 msgstr[1] "timme"
 
-#: src/Battery.py:184
+#: src/Battery.py:189
 #, fuzzy, python-format
 msgid "%d Minutes"
 msgid_plural "%d Minutes"
@@ -49,11 +49,11 @@ msgstr[1] "minut"
 msgid "Battery Monitor"
 msgstr "Batteriövervakaren"
 
-#: src/Battery.py:144
+#: src/Battery.py:149
 msgid "Battery charged"
 msgstr "Batteri uppladdat"
 
-#: src/Battery.py:140
+#: src/Battery.py:145
 #, python-format
 msgid ""
 "Battery charged\n"
@@ -99,11 +99,11 @@ msgstr ""
 "Batteri laddas upp\n"
 "Batterinivå: %s%%"
 
-#: src/Battery.py:130
+#: src/Battery.py:135
 msgid "Critical battery level"
 msgstr "Kritisk batterinivå"
 
-#: src/Battery.py:135
+#: src/Battery.py:140
 msgid "Discharging battery"
 msgstr "Batteriet laddas ur"
 
@@ -111,7 +111,7 @@ msgstr "Batteriet laddas ur"
 msgid "Hibernate"
 msgstr "Vänteläge"
 
-#: src/Battery.py:124
+#: src/Battery.py:130
 msgid "Low battery level"
 msgstr "Låg batterinivå"
 
@@ -139,7 +139,7 @@ msgstr ""
 msgid "battery-monitor"
 msgstr "Batteriövervakaren"
 
-#: src/Battery.py:178
+#: src/Battery.py:183
 msgid "unknown time"
 msgstr "okänd tid"
 
