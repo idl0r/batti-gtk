@@ -112,6 +112,12 @@ class Battery(object):
                 
         elif info._state == STATE_DISCHARGING:
             self.__systray.set_tooltip(tooltip)
+
+            if info._percentage > 5:
+                self.__systray.set_blinking(False)
+            else:
+                self.__systray.set_blinking(True)
+				
             if info._percentage > 80:
                 icon = 'battery-full'
             elif info._percentage > 40:
@@ -125,7 +131,6 @@ class Battery(object):
                     self.__shown_bat_low = True
             else:
                 icon = 'battery-empty'
-                self.__systray.set_blinking(True)
                 if not self.__shown_bat_critical:
                     self._notify(True, icon, _('Critical battery level'), notification)
                     self.__shown_bat_critical = True
