@@ -181,19 +181,7 @@ class Battery(object):
         hours = minutes / 60
         minutes = minutes % 60                    
        
-        #FIXME: The string below needs to be i18n-ized properly
-        return self._format_time(hours, _('Hour'), _('Hours')) + " " + self._format_time(minutes, _('Minute'), _('Minutes'))
-
-
-    def _format_time(self, time, singular, plural):
-        if time == 0:
-            return ""
-        elif time == 1:
-            return "1 %s" % singular
-        else:
-            return "%s %s" % (time, plural)
-        
- 
+        return gettext.ngettext('%d Hour', '%d Hours', hours) + " " + gettext.ngettext('%d Minutes', '%d Minutes', minutes)
 
 
 class DeviceKitBattery(Battery):

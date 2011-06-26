@@ -20,11 +20,13 @@
 import os
 import sys
 
+from gettext import gettext as _
+
 try:
     import dbus
     from dbus.mainloop.glib import DBusGMainLoop
 except ImportError:
-    sys.stderr.write("This program needs dbus-python\nExiting\n")
+    sys.stderr.write(_("This program needs dbus-python\nExiting\n"))
     sys.exit(1)
 
 try:
@@ -33,14 +35,14 @@ try:
     else:
         from batti import BatteryMonitor
 except ImportError:
-    sys.stderr.write("Can't import batti's BatteryMonitor module\nExiting\n")
+    sys.stderr.write(_("Can't import batti's BatteryMonitor module\nExiting\n"))
     sys.exit(1)
 
 if __name__ == "__main__":
     DBusGMainLoop(set_as_default=True)
     bus = dbus.SessionBus()
     if bus.request_name("org.gitorious.batti") != dbus.bus.REQUEST_NAME_REPLY_PRIMARY_OWNER:
-        sys.stderr.write("Only one instance is allowed\n")
+        sys.stderr.write(_("Only one instance is allowed\n"))
         sys.exit(1)
     else:
         monitor = BatteryMonitor.BatteryMonitor()

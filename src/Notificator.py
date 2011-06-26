@@ -20,6 +20,9 @@
 import dbus
 from dbus.exceptions import DBusException
 
+from gettext import gettext as _
+
+
 class Notificator:
     
     def __init__(self):
@@ -54,7 +57,7 @@ class Notificator:
 
     def __show(self, icon, subject, msg, urgent):
         if self.__notify is not None:
-            hints = {'urgency':dbus.Byte(urgent), 'desktop-entry':dbus.String('battery-monitor')}
+            hints = {'urgency':dbus.Byte(urgent), 'desktop-entry':dbus.String(_('battery-monitor'))}
             if( self.__show_positioned() ):
                 hints['x'] = self.__posx
                 hints['y'] = self.__posy
