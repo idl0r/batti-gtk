@@ -20,7 +20,7 @@
 from gettext import gettext as _
 
 NAME = 'batti'
-VERSION = '0.3.8'
+VERSION = '0.3.9'
 DESCRIPTION = _('Battery monitor for the system tray')
 AUTHOR = 'Arthur Spitzer'
 AUTHOR_EMAIL = 'arthapex@gmail.com'
