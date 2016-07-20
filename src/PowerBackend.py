@@ -165,7 +165,7 @@ class UPowerBackend(PowerBackend):
         self.__batteries = {}
         for dev in devices:
             (prop_iface, dev_iface) = self.__get_battery(dev)
-            type = prop_iface.Get(self.device_interface, 'type')
+            type = prop_iface.Get(self.device_interface, 'Type')
             if type == self.bat_type:
                 power_bat = UPowerBattery(prop_iface, dev_iface)
                 self.__batteries[dev] = power_bat
@@ -228,7 +228,7 @@ class UPowerBackend(PowerBackend):
     def __device_added(self, udi):
         (prop_iface, dev_iface) = self.__get_battery(udi)
         try:
-            type = prop_iface.Get(self.device_interface, 'type')
+            type = prop_iface.Get(self.device_interface, 'Type')
             if type == self.bat_type:
                 power_bat = UPowerBattery(prop_iface, dev_iface)
                 power_bat.set_left_popup_menu_action(self.__mc_action)
